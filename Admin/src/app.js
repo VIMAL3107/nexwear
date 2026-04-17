@@ -66,17 +66,20 @@ function initSubmenus() {
         const chevron = parent.querySelector('.nav-chevron');
         if (!submenu) return;
 
-        parent.addEventListener('click', () => {
-            const isOpen = submenu.classList.contains('open');
+        parent.addEventListener('click', (e) => {
+            // If the actual click was on the parent (not a sub-item bubbling up)
+            if (e.target.closest('.nav-parent') === parent && !e.target.closest('.nav-submenu')) {
+                const isOpen = submenu.classList.contains('open');
 
-            // Close all first
-            document.querySelectorAll('.nav-submenu').forEach(sm => sm.classList.remove('open'));
-            document.querySelectorAll('.nav-chevron').forEach(ch => ch.classList.remove('open'));
+                // Close all first
+                document.querySelectorAll('.nav-submenu').forEach(sm => sm.classList.remove('open'));
+                document.querySelectorAll('.nav-chevron').forEach(ch => ch.classList.remove('open'));
 
-            // Toggle open if it was closed
-            if (!isOpen) {
-                submenu.classList.add('open');
-                chevron?.classList.add('open');
+                // Toggle open if it was closed
+                if (!isOpen) {
+                    submenu.classList.add('open');
+                    chevron?.classList.add('open');
+                }
             }
         });
 

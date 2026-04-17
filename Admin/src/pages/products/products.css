@@ -37,26 +37,20 @@
 .nav-submenu {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: block;
-    /* guarantee proper block rendering */
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .nav-submenu.open {
-    max-height: 500px;
-    /* increased to prevent cutoffs */
-}
-
-@media (max-width: 900px) {
-    .add-product-layout {
-        grid-template-columns: 1fr !important;
-    }
+    max-height: 400px;
+    padding-bottom: 8px;
 }
 
 .nav-sub-item {
-    padding: 9px 28px 9px 48px;
+    padding: 11px 28px 11px 48px;
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--text-dim);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -71,24 +65,49 @@
 
 .nav-sub-item.active {
     color: var(--teal);
-    font-weight: 600;
+    font-weight: 700;
+    background: rgba(45, 203, 142, 0.04);
 }
 
 .nav-sub-dot {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--text-muted);
     flex-shrink: 0;
 }
 
+.nav-sub-item.active .nav-sub-dot {
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+}
+
 /* ═══ ADD NEW DRESS PAGE ═══ */
 
 .add-product-layout {
-    display: grid;
-    grid-template-columns: 1fr 360px;
+    display: flex;
     gap: 28px;
-    align-items: start;
+    align-items: flex-start;
+}
+
+.add-product-col-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.add-product-col-side {
+    width: 360px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+    .add-product-layout {
+        flex-direction: column;
+    }
+
+    .add-product-col-side {
+        width: 100%;
+    }
 }
 
 .form-group {
