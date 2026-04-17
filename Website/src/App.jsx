@@ -8,10 +8,18 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<AdminRedirect />} />
         {/* ADD MORE ROUTES HERE IN THE FUTURE */}
       </Routes>
     </BrowserRouter>
   );
+}
+
+function AdminRedirect() {
+  React.useEffect(() => {
+    window.location.href = '/admin/';
+  }, []);
+  return null;
 }
 
 export default App;
