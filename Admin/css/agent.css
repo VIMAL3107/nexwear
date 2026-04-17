@@ -1,0 +1,12 @@
+/* ═══ AGENT CONFIG PAGE STYLES ═══ */
+
+#page-agent .data-table td:nth-child(2),
+#page-agent .data-table td:nth-child(3) {
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--text-dim);
+}
+
+#page-agent .data-table tr:hover {
+    background: var(--bg-hover);
+}

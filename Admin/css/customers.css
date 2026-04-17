@@ -1,0 +1,11 @@
+/* ═══ CUSTOMERS PAGE STYLES ═══ */
+
+#page-customers .data-table td:nth-child(4) {
+    font-weight: 600;
+    color: var(--teal);
+}
+
+#page-customers .data-table td:nth-child(5) .pill {
+    background: var(--accent-primary-bg);
+    color: var(--accent-primary);
+}

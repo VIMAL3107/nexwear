@@ -1,0 +1,91 @@
+/* ═══ DESIGNS SPECIFIC STYLES ═══ */
+
+.design-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.design-grid.col-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.design-grid.col-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.design-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    transition: var(--t-fast);
+    cursor: pointer;
+}
+
+.design-card:hover {
+    transform: translateY(-5px);
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 32px rgba(124, 110, 247, 0.15);
+}
+
+.design-art {
+    height: 110px;
+    background: #111;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 14px;
+}
+
+.design-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.design-cnt {
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+/* Segment Filter Buttons */
+.seg-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.seg-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-family: inherit;
+    transition: var(--t-fast);
+}
+
+.seg-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-main);
+}
+
+.seg-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.seg-btn.danger {
+    color: var(--red);
+    border-color: rgba(232, 85, 85, 0.3);
+}

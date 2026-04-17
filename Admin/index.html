@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexwear Admin — T-Shirt Platform</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+
+  <div class="shell">
+
+    <!-- ═══ SIDEBAR NAVIGATION ═══ -->
+    <nav class="nav">
+      <div class="nav-logo">Nex<span>Wear</span></div>
+      <div class="nav-agent">
+        <span class="agent-pulse"></span>
+        <span class="agent-text">Agent active · 342 actions today</span>
+      </div>
+
+      <div class="nav-section">Main</div>
+      <div class="nav-item active" data-page="dashboard">
+        <span class="nav-dot" style="background:var(--accent-primary)"></span>
+        Dashboard
+        <span class="nav-badge">3</span>
+      </div>
+      <div class="nav-item" data-page="orders">
+        <span class="nav-dot" style="background:var(--accent-secondary)"></span>
+        Orders
+      </div>
+      <div class="nav-item nav-parent" data-page="products">
+        <span class="nav-dot" style="background:var(--teal)"></span>
+        Products
+        <span class="nav-chevron">›</span>
+      </div>
+      <div class="nav-submenu" id="submenu-products">
+        <div class="nav-sub-item" data-page="products">
+          <span class="nav-sub-dot"></span> All Products
+        </div>
+        <div class="nav-sub-item" data-page="add-product">
+          <span class="nav-sub-dot" style="background:var(--teal)"></span> + Add New Dress
+        </div>
+      </div>
+      <div class="nav-item" data-page="designs">
+        <span class="nav-dot" style="background:var(--amber)"></span>
+        Designs
+      </div>
+
+      <div class="nav-section">Business</div>
+      <div class="nav-item" data-page="partners">
+        <span class="nav-dot" style="background:var(--purple)"></span>
+        Partners
+      </div>
+      <div class="nav-item" data-page="payouts">
+        <span class="nav-dot" style="background:var(--teal)"></span>
+        Payouts
+      </div>
+      <div class="nav-item" data-page="customers">
+        <span class="nav-dot" style="background:var(--red)"></span>
+        Customers
+      </div>
+      <div class="nav-item" data-page="refunds">
+        <span class="nav-dot" style="background:var(--red)"></span>
+        Refunds
+        <span class="nav-badge">3</span>
+      </div>
+
+      <div class="nav-section">Intelligence</div>
+      <div class="nav-item" data-page="analytics">
+        <span class="nav-dot" style="background:var(--purple)"></span>
+        AI analytics
+      </div>
+      <div class="nav-item" data-page="marketing">
+        <span class="nav-dot" style="background:var(--amber)"></span>
+        Marketing
+      </div>
+
+      <div class="nav-section">System</div>
+      <div class="nav-item" data-page="settings">
+        <span class="nav-dot" style="background:var(--text3)"></span>
+        Settings
+      </div>
+      <div class="nav-item" data-page="agent">
+        <span class="nav-dot" style="background:var(--text-muted)"></span>
+        Agent config
+      </div>
+    </nav>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <main class="content">
+
+      <!-- ══════════════════════════════
+         PAGE: DASHBOARD
+    ══════════════════════════════ -->
+      <div class="page active" id="page-dashboard">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Good morning, Rajan</div>
+            <div class="page-sub">Friday, 10 Apr 2026 · Nexwear agent running · 3 items need your attention</div>
+          </div>
+          <div class="topbar-right">
+            <span class="top-badge alert">3 escalations</span>
+            <span class="top-badge info">● Agent active</span>
+            <div class="avatar">RJ</div>
+          </div>
+        </div>
+
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">Revenue today</div>
+            <div class="kpi-value">₹42,380</div>
+            <div class="kpi-sub text-up">↑ 18% vs yesterday</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Orders today</div>
+            <div class="kpi-value">87</div>
+            <div class="kpi-sub text-up">↑ 12 since 9am</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Your commission</div>
+            <div class="kpi-value">₹8,460</div>
+            <div class="kpi-sub text-dim">20% avg margin</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Pending payouts</div>
+            <div class="kpi-value">₹1,24,500</div>
+            <div class="kpi-sub text-dn">Due in 2 days</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Revenue — last 7 days <span class="card-title-right">₹2,45,480 total</span></div>
+            <div class="chart-bars" id="rev-chart-bars"></div>
+            <div style="display:flex;justify-content:space-between;margin-top:5px">
+              <span style="font-size:9px;color:var(--text3)">Apr 4</span>
+              <span style="font-size:9px;color:var(--text3)">Apr 10</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Agent escalations <span class="card-title-right warn">3 need you</span></div>
+            <div id="alert-items-container"></div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-title">Top designs today <span class="card-title-right">by orders</span></div>
+            <div id="top-designs-grid" class="design-grid col-4"></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Partner scores <span class="card-title-right">live · agent tracked</span></div>
+            <div class="partner-row">
+              <div class="partner-init" style="background:var(--teal-bg);color:var(--teal)">PX</div>
+              <div style="flex:1;margin-left:8px">
+                <div style="font-size:12px;font-weight:500;color:var(--text)">PrintX — Chennai</div>
+                <div class="score-wrap" style="margin-top:4px">
+                  <div class="score-track">
+                    <div class="score-fill" style="width:94%;background:var(--teal)"></div>
+                  </div><span style="font-size:11px;color:var(--teal);font-weight:500">94</span>
+                </div>
+              </div>
+            </div>
+            <div class="partner-row">
+              <div class="partner-init" style="background:var(--purple-bg);color:var(--purple2)">CP</div>
+              <div style="flex:1;margin-left:8px">
+                <div style="font-size:12px;font-weight:500;color:var(--text)">ColorPro — Bangalore</div>
+                <div class="score-wrap" style="margin-top:4px">
+                  <div class="score-track">
+                    <div class="score-fill" style="width:88%;background:var(--purple)"></div>
+                  </div><span style="font-size:11px;color:var(--purple2);font-weight:500">88</span>
+                </div>
+              </div>
+            </div>
+            <div class="partner-row">
+              <div class="partner-init" style="background:var(--amber-bg);color:var(--amber)">IM</div>
+              <div style="flex:1;margin-left:8px">
+                <div style="font-size:12px;font-weight:500;color:var(--text)">InkMate — Mumbai ⚠</div>
+                <div class="score-wrap" style="margin-top:4px">
+                  <div class="score-track">
+                    <div class="score-fill" style="width:72%;background:var(--amber)"></div>
+                  </div><span style="font-size:11px;color:var(--amber);font-weight:500">72</span>
+                </div>
+              </div>
+            </div>
+            <div class="partner-row">
+              <div class="partner-init" style="background:var(--blue-bg);color:var(--blue)">TL</div>
+              <div style="flex:1;margin-left:8px">
+                <div style="font-size:12px;font-weight:500;color:var(--text)">TeeLink — Hyderabad</div>
+                <div class="score-wrap" style="margin-top:4px">
+                  <div class="score-track">
+                    <div class="score-fill" style="width:91%;background:var(--blue)"></div>
+                  </div><span style="font-size:11px;color:var(--blue);font-weight:500">91</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Revenue by city</div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Chennai</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:82%;background:var(--purple)"></div>
+              </div><span class="mini-bar-val">₹14.2k</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Bangalore</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:65%;background:var(--purple)"></div>
+              </div><span class="mini-bar-val">₹11.3k</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Mumbai</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:52%;background:var(--purple)"></div>
+              </div><span class="mini-bar-val">₹9.0k</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Hyderabad</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:38%;background:var(--purple)"></div>
+              </div><span class="mini-bar-val">₹6.6k</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Delhi</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:24%;background:var(--purple)"></div>
+              </div><span class="mini-bar-val">₹4.2k</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Others</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:15%;background:var(--text3)"></div>
+              </div><span class="mini-bar-val">₹2.6k</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="ai-chip"><span class="ai-dot"></span>Ask Nexwear agent</span><span
+              class="card-title-right accent">AI powered · queries live data</span></div>
+          <div class="ai-quick-btns">
+            <button class="ai-quick-btn" data-q="Which partner has the most delays this week?">Which partner delays
+              most? ↗</button>
+            <button class="ai-quick-btn" data-q="Top selling design category this month?">Top design category ↗</button>
+            <button class="ai-quick-btn" data-q="Why did revenue drop on Apr 7?">Why Apr 7 drop? ↗</button>
+            <button class="ai-quick-btn" data-q="Show pending payouts breakdown">Pending payouts ↗</button>
+            <button class="ai-quick-btn" data-q="Which city has the highest repeat purchase rate?">Best repeat city
+              ↗</button>
+          </div>
+          <div class="ai-input-row">
+            <input class="ai-input" id="dash-ai-input"
+              placeholder="Ask anything — e.g. show orders stuck in printing for more than 2 days…" />
+            <button class="ai-send" onclick="askAgent('dash-ai-input')">Ask agent</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: ORDERS
+    ══════════════════════════════ -->
+      <div class="page" id="page-orders">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Orders</div>
+            <div class="page-sub">382 total · 87 today · 4 flagged</div>
+          </div>
+          <div class="topbar-right"><span class="top-badge alert">4 flagged</span></div>
+        </div>
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">Total orders</div>
+            <div class="kpi-value">382</div>
+            <div class="kpi-sub text-up">↑ 87 today</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Printing now</div>
+            <div class="kpi-value">54</div>
+            <div class="kpi-sub text-dim">across 4 partners</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Shipped</div>
+            <div class="kpi-value">28</div>
+            <div class="kpi-sub text-dim">avg 2.1 days transit</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Avg order value</div>
+            <div class="kpi-value">₹4,870</div>
+            <div class="kpi-sub text-up">↑ 6% this week</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">All orders <span class="card-title-right">filter and search below</span></div>
+          <div class="filter-row">
+            <select id="order-status-filter">
+              <option value="all">All status</option>
+              <option value="printing">Printing</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+              <option value="flagged">Flagged</option>
+            </select>
+            <select>
+              <option>All partners</option>
+              <option>PrintX</option>
+              <option>InkMate</option>
+              <option>ColorPro</option>
+              <option>TeeLink</option>
+            </select>
+            <select>
+              <option>All segments</option>
+              <option>College</option>
+              <option>Corporate</option>
+              <option>Regional</option>
+              <option>Fan</option>
+            </select>
+            <input type="search" id="order-search" placeholder="Search order ID or customer…" />
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:95px">Order ID</th>
+                <th style="width:135px">Customer</th>
+                <th style="width:75px">Items</th>
+                <th style="width:90px">Value</th>
+                <th style="width:95px">Partner</th>
+                <th style="width:85px">Date</th>
+                <th style="width:90px">Status</th>
+                <th style="width:85px">Action</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PRODUCTS
+    ══════════════════════════════ -->
+      <div class="page" id="page-products">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Products</div>
+            <div class="page-sub">Cloth types · sizes · pricing engine</div>
+          </div>
+          <div class="topbar-right"><button class="btn btn-primary btn-lg"
+              onclick="showToast('Add product form coming soon','info')">+ Add product</button></div>
+        </div>
+        <div class="kpi-row col-3">
+          <div class="kpi-card">
+            <div class="kpi-label">Active cloth types</div>
+            <div class="kpi-value">8</div>
+            <div class="kpi-sub text-dim">Cotton, polyester, blend…</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Size variants</div>
+            <div class="kpi-value">6</div>
+            <div class="kpi-sub text-dim">XS — 3XL</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Avg commission %</div>
+            <div class="kpi-value">21%</div>
+            <div class="kpi-sub text-up">↑ 2% from last month</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Product catalogue <span class="card-title-right">Last updated: today</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:160px">Cloth type</th>
+                <th style="width:55px">GSM</th>
+                <th style="width:95px">Cloth cost</th>
+                <th style="width:95px">Print cost</th>
+                <th style="width:105px">Commission %</th>
+                <th style="width:105px">Order total</th>
+                <th style="width:80px">Status</th>
+                <th style="width:65px">Edit</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Bulk pricing tiers <span class="card-title-right">Auto-applied at checkout</span>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:140px">Quantity</th>
+                <th style="width:180px">Discount</th>
+                <th style="width:180px">Applies to</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="primary">10 – 24 pcs</td>
+                <td>5% off cloth cost</td>
+                <td>All cloth types</td>
+                <td><span class="pill pill-teal">Active</span></td>
+              </tr>
+              <tr>
+                <td class="primary">25 – 49 pcs</td>
+                <td>10% off cloth cost</td>
+                <td>All cloth types</td>
+                <td><span class="pill pill-teal">Active</span></td>
+              </tr>
+              <tr>
+                <td class="primary">50+ pcs</td>
+                <td>15% off cloth cost</td>
+                <td>All cloth types</td>
+                <td><span class="pill pill-teal">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: DESIGNS
+    ══════════════════════════════ -->
+      <div class="page" id="page-designs">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Designs</div>
+            <div class="page-sub">AI-generated design library · 1,248 total designs</div>
+          </div>
+          <div class="topbar-right"><span class="top-badge alert">3 flagged</span></div>
+        </div>
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">Total designs</div>
+            <div class="kpi-value">1,248</div>
+            <div class="kpi-sub text-up">↑ 34 today</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">AI generated</div>
+            <div class="kpi-value">91%</div>
+            <div class="kpi-sub text-dim">1,136 designs</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Flagged for review</div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-sub text-dn">Need approval</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Top style</div>
+            <div class="kpi-value">Streetwear</div>
+            <div class="kpi-sub text-dim">38% of orders</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Design library <span class="card-title-right">click a design to view details</span>
+          </div>
+          <div class="seg-row">
+            <button class="seg-btn active">All</button>
+            <button class="seg-btn">Streetwear</button>
+            <button class="seg-btn">Minimal</button>
+            <button class="seg-btn">Folk / regional</button>
+            <button class="seg-btn">Corporate</button>
+            <button class="seg-btn">Fan / jersey</button>
+            <button class="seg-btn">Y2K / aesthetic</button>
+            <button class="seg-btn danger">Flagged (3)</button>
+          </div>
+          <div class="design-grid col-5" id="designs-grid"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PARTNERS
+    ══════════════════════════════ -->
+      <div class="page" id="page-partners">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Partners</div>
+            <div class="page-sub">Print partners · quality scores · SLA monitoring</div>
+          </div>
+          <div class="topbar-right"><button class="btn btn-primary btn-lg"
+              onclick="showToast('Add partner form coming soon','info')">+ Add partner</button></div>
+        </div>
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">Active partners</div>
+            <div class="kpi-value">8</div>
+            <div class="kpi-sub text-dim">across 5 cities</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Avg quality score</div>
+            <div class="kpi-value">86</div>
+            <div class="kpi-sub text-up">↑ 3 this month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">SLA breaches</div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-sub text-dn">InkMate flagged</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Orders in print</div>
+            <div class="kpi-value">54</div>
+            <div class="kpi-sub text-dim">all partners combined</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">All partners <span class="card-title-right accent">Agent monitors SLA 24/7</span>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:115px">Partner</th>
+                <th style="width:95px">City</th>
+                <th style="width:65px">Orders</th>
+                <th style="width:110px">Score</th>
+                <th style="width:115px">Pending payout</th>
+                <th style="width:95px">SLA status</th>
+                <th style="width:85px">Joined</th>
+                <th style="width:85px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="partners-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PAYOUTS
+    ══════════════════════════════ -->
+      <div class="page" id="page-payouts">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Payouts</div>
+            <div class="page-sub">Partner earnings · scheduled disbursements · history</div>
+          </div>
+          <div class="topbar-right"><button class="btn btn-teal btn-lg"
+              onclick="showToast('Running all scheduled payouts via Razorpay…','success')">Run payouts now</button>
+          </div>
+        </div>
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">Due this cycle</div>
+            <div class="kpi-value">₹1,24,500</div>
+            <div class="kpi-sub text-dn">Due Apr 12</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Paid this month</div>
+            <div class="kpi-value">₹3,82,000</div>
+            <div class="kpi-sub text-up">↑ 22% vs last month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Held (disputed)</div>
+            <div class="kpi-value">₹4,200</div>
+            <div class="kpi-sub text-dn">2 disputes open</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Commission kept</div>
+            <div class="kpi-value">₹82,400</div>
+            <div class="kpi-sub text-up">this month total</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Upcoming payouts — Apr 12 <span class="card-title-right accent">Agent auto-disburses
+              on schedule</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:110px">Partner</th>
+                <th style="width:65px">Orders</th>
+                <th style="width:120px">Cloth + Print</th>
+                <th style="width:105px">Your comm</th>
+                <th style="width:120px">Payout amount</th>
+                <th style="width:90px">Status</th>
+                <th style="width:85px">Action</th>
+              </tr>
+            </thead>
+            <tbody id="payouts-tbody"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Payout schedule <span class="card-title-right">configured in Settings</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:140px">Cycle</th>
+                <th style="width:160px">Day</th>
+                <th style="width:100px">Next run</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="primary">Cycle 1</td>
+                <td>12th of month</td>
+                <td>Apr 12, 2026</td>
+                <td><span class="pill pill-teal">Scheduled</span></td>
+              </tr>
+              <tr>
+                <td class="primary">Cycle 2</td>
+                <td>26th of month</td>
+                <td>Apr 26, 2026</td>
+                <td><span class="pill pill-teal">Scheduled</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: CUSTOMERS
+    ══════════════════════════════ -->
+      <div class="page" id="page-customers">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Customers</div>
+            <div class="page-sub">2,841 registered · order history · segments</div>
+          </div>
+        </div>
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">Total customers</div>
+            <div class="kpi-value">2,841</div>
+            <div class="kpi-sub text-up">↑ 124 this month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Repeat buyers</div>
+            <div class="kpi-value">38%</div>
+            <div class="kpi-sub text-up">↑ 4% vs last month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Avg lifetime value</div>
+            <div class="kpi-value">₹3,240</div>
+            <div class="kpi-sub text-up">↑ ₹180 this month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">NPS score</div>
+            <div class="kpi-value">72</div>
+            <div class="kpi-sub text-dim">from 340 responses</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Customer list <span class="card-title-right accent">Agent handles tier-1
+              support</span></div>
+          <div class="filter-row">
+            <select>
+              <option>All segments</option>
+              <option>College</option>
+              <option>Corporate</option>
+              <option>Fan</option>
+              <option>Regional</option>
+              <option>Gen Z</option>
+            </select>
+            <select>
+              <option>All cities</option>
+              <option>Chennai</option>
+              <option>Bangalore</option>
+              <option>Mumbai</option>
+              <option>Hyderabad</option>
+              <option>Delhi</option>
+            </select>
+            <input type="search" id="customer-search" placeholder="Search name or city…" />
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:135px">Customer</th>
+                <th style="width:95px">City</th>
+                <th style="width:60px">Orders</th>
+                <th style="width:110px">Total spent</th>
+                <th style="width:95px">Segment</th>
+                <th style="width:95px">Last order</th>
+                <th style="width:80px">Status</th>
+                <th style="width:75px">Action</th>
+              </tr>
+            </thead>
+            <tbody id="customers-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: REFUNDS
+    ══════════════════════════════ -->
+      <div class="page" id="page-refunds">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Refunds</div>
+            <div class="page-sub">Agent handles &lt;₹500 automatically · you approve &gt;₹500</div>
+          </div>
+          <div class="topbar-right"><span class="top-badge alert">3 need you</span></div>
+        </div>
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">Pending approval</div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-sub text-dn">Need your action</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Auto-resolved today</div>
+            <div class="kpi-value">8</div>
+            <div class="kpi-sub text-dim">by agent (&lt;₹500)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Total refunded (month)</div>
+            <div class="kpi-value">₹18,200</div>
+            <div class="kpi-sub text-dim">2.1% of GMV</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Avg resolution time</div>
+            <div class="kpi-value">4.2 min</div>
+            <div class="kpi-sub text-up">agent-handled</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Pending your approval <span class="card-title-right warn">3 above ₹500
+              threshold</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:100px">Order</th>
+                <th style="width:120px">Customer</th>
+                <th style="width:90px">Amount</th>
+                <th style="width:160px">Reason</th>
+                <th style="width:140px">Agent note</th>
+                <th style="width:130px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="refunds-pending-tbody"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Auto-resolved by agent today <span class="card-title-right teal">No action
+              needed</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:100px">Order</th>
+                <th style="width:120px">Customer</th>
+                <th style="width:90px">Amount</th>
+                <th style="width:160px">Reason</th>
+                <th style="width:110px">Resolved at</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="refunds-auto-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: AI ANALYTICS
+    ══════════════════════════════ -->
+      <div class="page" id="page-analytics">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">AI analytics</div>
+            <div class="page-sub">Ask anything about your business in plain language</div>
+          </div>
+        </div>
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-label">GMV this month</div>
+            <div class="kpi-value">₹8,42,000</div>
+            <div class="kpi-sub text-up">↑ 28% vs last month</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Conversion rate</div>
+            <div class="kpi-value">3.8%</div>
+            <div class="kpi-sub text-up">↑ 0.4% this week</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Design → order time</div>
+            <div class="kpi-value">6.2 min</div>
+            <div class="kpi-sub text-up">↓ 1.4 min faster</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Agent queries today</div>
+            <div class="kpi-value">24</div>
+            <div class="kpi-sub text-dim">all answered</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ai-chip"><span class="ai-dot"></span>Nexwear AI agent</div>
+          <p style="font-size:12px;color:var(--text3);margin-bottom:14px">Ask any business question — the agent queries
+            your live data warehouse and answers instantly.</p>
+          <div class="ai-quick-btns">
+            <button class="ai-quick-btn" data-q="Which partner has the most delays this week?">Which partner delays
+              most? ↗</button>
+            <button class="ai-quick-btn" data-q="Top selling design category this month?">Top design category ↗</button>
+            <button class="ai-quick-btn" data-q="Show revenue trend for last 30 days">Revenue last 30 days ↗</button>
+            <button class="ai-quick-btn" data-q="Which city has the highest repeat purchase rate?">Best repeat city
+              ↗</button>
+            <button class="ai-quick-btn" data-q="Why did revenue drop on Apr 7?">Why Apr 7 drop? ↗</button>
+            <button class="ai-quick-btn" data-q="Which cloth type has the highest margin?">Highest margin cloth
+              ↗</button>
+          </div>
+          <div class="ai-input-row">
+            <input class="ai-input" id="ai-input"
+              placeholder="e.g. show orders stuck in printing for more than 2 days…" />
+            <button class="ai-send" onclick="askAgent('ai-input')">Ask agent</button>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Revenue by segment — this month</div>
+            <div class="mini-bar-row"><span class="mini-bar-label">College / youth</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:82%;background:var(--purple)"></div>
+              </div><span class="mini-bar-val">₹3.2L</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Corporate</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:68%;background:var(--blue)"></div>
+              </div><span class="mini-bar-val">₹2.6L</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Regional / folk</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:42%;background:var(--amber)"></div>
+              </div><span class="mini-bar-val">₹1.6L</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Fan / community</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:28%;background:var(--pink)"></div>
+              </div><span class="mini-bar-val">₹1.1L</span>
+            </div>
+            <div class="mini-bar-row"><span class="mini-bar-label">Gen Z / aesthetic</span>
+              <div class="mini-bar-track">
+                <div class="mini-bar-fill" style="width:16%;background:var(--teal)"></div>
+              </div><span class="mini-bar-val">₹0.6L</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Agent insights — detected proactively</div>
+            <div class="insight-item">
+              <div class="alert-icon" style="background:var(--green-bg)">📈</div>
+              <div class="alert-body">
+                <div class="alert-title">Corporate orders up 34%</div>
+                <div class="alert-sub">Bangalore + Hyderabad driving growth this week</div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="alert-icon" style="background:var(--amber-bg)">⚠️</div>
+              <div class="alert-body">
+                <div class="alert-title">Folk art designs trending hard</div>
+                <div class="alert-sub">+180% WoW — consider stocking more cloth</div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="alert-icon" style="background:var(--red-bg)">📉</div>
+              <div class="alert-body">
+                <div class="alert-title">Apr 7 dip — payment gateway</div>
+                <div class="alert-sub">Razorpay had 2h downtime, 11am–1pm</div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="alert-icon" style="background:var(--purple-bg)">💡</div>
+              <div class="alert-body">
+                <div class="alert-title">Repeat purchase rate up in Chennai</div>
+                <div class="alert-sub">3.2 orders / customer avg vs 2.1 national</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: MARKETING
+    ══════════════════════════════ -->
+      <div class="page" id="page-marketing">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Marketing</div>
+            <div class="page-sub">Social posts · campaigns · agent-scheduled content</div>
+          </div>
+          <div class="topbar-right"><button class="btn btn-primary btn-lg"
+              onclick="showToast('New campaign builder opening soon','info')">+ New campaign</button></div>
+        </div>
+        <div class="kpi-row col-3">
+          <div class="kpi-card">
+            <div class="kpi-label">Posts scheduled</div>
+            <div class="kpi-value">12</div>
+            <div class="kpi-sub text-dim">next 7 days</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Instagram reach (week)</div>
+            <div class="kpi-value">24,800</div>
+            <div class="kpi-sub text-up">↑ 18% vs last week</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Leads from social</div>
+            <div class="kpi-value">38</div>
+            <div class="kpi-sub text-up">↑ 11 this week</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Agent post queue <span class="card-title-right warn">Approve before agent
+              publishes</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:120px">Date &amp; time</th>
+                <th style="width:105px">Platform</th>
+                <th style="width:210px">Caption preview</th>
+                <th style="width:120px">Design used</th>
+                <th style="width:90px">Segment</th>
+                <th style="width:90px">Status</th>
+                <th style="width:85px">Action</th>
+              </tr>
+            </thead>
+            <tbody id="marketing-tbody"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Channel performance — this week</div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Instagram</span>
+            <div class="mini-bar-track">
+              <div class="mini-bar-fill" style="width:78%;background:var(--purple)"></div>
+            </div><span class="mini-bar-val">18,400</span>
+          </div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Pinterest</span>
+            <div class="mini-bar-track">
+              <div class="mini-bar-fill" style="width:52%;background:var(--pink)"></div>
+            </div><span class="mini-bar-val">12,200</span>
+          </div>
+          <div class="mini-bar-row"><span class="mini-bar-label">Facebook</span>
+            <div class="mini-bar-track">
+              <div class="mini-bar-fill" style="width:38%;background:var(--blue)"></div>
+            </div><span class="mini-bar-val">9,100</span>
+          </div>
+          <div class="mini-bar-row"><span class="mini-bar-label">WhatsApp</span>
+            <div class="mini-bar-track">
+              <div class="mini-bar-fill" style="width:24%;background:var(--teal)"></div>
+            </div><span class="mini-bar-val">5,800</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SETTINGS
+    ══════════════════════════════ -->
+      <div class="page" id="page-settings">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Settings</div>
+            <div class="page-sub">Platform config · pricing rules · notifications · integrations</div>
+          </div>
+        </div>
+        <div class="grid-2-eq">
+          <div>
+            <div class="card">
+              <div class="card-title">Business automation</div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Auto-assign print partner</div>
+                  <div class="toggle-sub">Agent picks best available partner on each order</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Auto-disburse payouts</div>
+                  <div class="toggle-sub">Runs on schedule — Apr 12 and Apr 26</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Auto-refund below ₹500</div>
+                  <div class="toggle-sub">Agent approves without needing your action</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Content moderation</div>
+                  <div class="toggle-sub">Flag offensive or inappropriate AI designs</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Partner SLA alerts</div>
+                  <div class="toggle-sub">Alert and nudge if any order delayed >48h</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Daily digest</div>
+                  <div class="toggle-sub">Agent sends morning summary to your WhatsApp</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title">Notification channels</div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">WhatsApp escalations</div>
+                  <div class="toggle-sub">Critical alerts sent to your registered number</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Email digest</div>
+                  <div class="toggle-sub">Morning summary via SendGrid</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">SMS for large orders</div>
+                  <div class="toggle-sub">Orders above ₹10,000</div>
+                </div>
+                <button class="toggle-switch off"></button>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Instagram DM replies</div>
+                  <div class="toggle-sub">Agent auto-replies to product enquiries</div>
+                </div>
+                <button class="toggle-switch on"></button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <div class="card-title">Refund thresholds</div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Amount range</th>
+                    <th>Approver</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="primary">&lt; ₹500</td>
+                    <td>Agent auto-approves instantly</td>
+                  </tr>
+                  <tr>
+                    <td class="primary">₹500 – ₹2,000</td>
+                    <td>Admin (you) via escalation</td>
+                  </tr>
+                  <tr>
+                    <td class="primary">&gt; ₹2,000</td>
+                    <td>Admin + partner confirmation</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card">
+              <div class="card-title">Payout schedule</div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Cycle</th>
+                    <th>Day</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="primary">Cycle 1</td>
+                    <td>12th of month</td>
+                    <td><span class="pill pill-teal">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td class="primary">Cycle 2</td>
+                    <td>26th of month</td>
+                    <td><span class="pill pill-teal">Active</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card">
+              <div class="card-title">Integrations</div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Service</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="integrations-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: AGENT CONFIG
+    ══════════════════════════════ -->
+      <div class="page" id="page-agent">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Agent config</div>
+            <div class="page-sub">Configure what each Nexwear agent can do autonomously</div>
+          </div>
+        </div>
+        <div class="kpi-row col-3">
+          <div class="kpi-card">
+            <div class="kpi-label">Active agents</div>
+            <div class="kpi-value">6 / 6</div>
+            <div class="kpi-sub text-up">All running normally</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Actions today</div>
+            <div class="kpi-value">342</div>
+            <div class="kpi-sub text-dim">agent-handled automatically</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Escalated to you</div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-sub text-dim">0.9% escalation rate</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Agent permissions <span class="card-title-right">what each agent does without asking
+              you — toggle to enable/disable</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:145px">Agent</th>
+                <th style="width:220px">Auto-allowed actions</th>
+                <th style="width:210px">Escalates to you when</th>
+                <th style="width:80px">Status</th>
+                <th style="width:70px">Toggle</th>
+              </tr>
+            </thead>
+            <tbody id="agents-tbody"></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">Agent activity log — today</div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:90px">Time</th>
+                <th style="width:140px">Agent</th>
+                <th style="width:260px">Action taken</th>
+                <th>Outcome</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--text3)">09:42am</td>
+                <td class="primary">Order agent</td>
+                <td>Assigned #ORD-4821 to PrintX (score 94)</td>
+                <td><span class="pill pill-teal">Success</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--text3)">09:38am</td>
+                <td class="primary">Notification agent</td>
+                <td>Sent order confirmation WhatsApp to Priya Sharma</td>
+                <td><span class="pill pill-teal">Delivered</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--text3)">09:14am</td>
+                <td class="primary">Partner agent</td>
+                <td>Processed auto-refund ₹480 for #ORD-4811</td>
+                <td><span class="pill pill-teal">Success</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--text3)">08:52am</td>
+                <td class="primary">Analytics agent</td>
+                <td>Sent daily digest — GMV ₹42,380, 87 orders, 3 alerts</td>
+                <td><span class="pill pill-teal">Sent</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--text3)">08:30am</td>
+                <td class="primary">Partner agent</td>
+                <td>Flagged InkMate SLA breach — 3 orders >48h delayed</td>
+                <td><span class="pill pill-amber">Escalated</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--text3)">08:14am</td>
+                <td class="primary">Design agent</td>
+                <td>Generated 3 variants for "Folk Art Tee v2" prompt</td>
+                <td><span class="pill pill-teal">Exported</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--text3)">07:58am</td>
+                <td class="primary">Inventory agent</td>
+                <td>Alert: PrintX cotton premium stock below threshold</td>
+                <td><span class="pill pill-amber">Notified</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: ADD NEW DRESS
+    ══════════════════════════════ -->
+      <div class="page" id="page-add-product">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Add New Dress</div>
+            <div class="page-sub">Fill in the product details below · it will appear in the catalogue</div>
+          </div>
+          <div class="topbar-right">
+            <button class="btn" onclick="window._AddProduct && window._AddProduct.saveDraft()">Save Draft</button>
+            <button class="btn btn-primary btn-lg" onclick="window._AddProduct && window._AddProduct.publish()">Publish
+              Product</button>
+          </div>
+        </div>
+
+        <div class="add-product-layout">
+
+          <!-- LEFT COLUMN -->
+          <div class="add-product-col-main">
+
+            <!-- Basic Info -->
+            <div class="card">
+              <div class="card-title">Basic Information</div>
+              <div class="form-group">
+                <label class="form-label">Product Name</label>
+                <input class="form-input" id="ap-name" type="text" placeholder="e.g. Chennai Pride Oversized Tee" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select class="form-input" id="ap-category">
+                    <option value="">Select category…</option>
+                    <option>Streetwear</option>
+                    <option>Minimal</option>
+                    <option>Folk / Regional</option>
+                    <option>Corporate</option>
+                    <option>Fan / Jersey</option>
+                    <option>Y2K / Aesthetic</option>
+                    <option>College</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Cloth Type</label>
+                  <select class="form-input" id="ap-cloth">
+                    <option value="">Select cloth…</option>
+                    <option>Cotton Premium (Bio-wash) 180 GSM</option>
+                    <option>Heavyweight Oversized 240 GSM</option>
+                    <option>Performance Polyester 140 GSM</option>
+                    <option>French Terry 320 GSM</option>
+                    <option>Sustainable Bamboo 160 GSM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Product Description</label>
+                <textarea class="form-input form-textarea" id="ap-desc"
+                  placeholder="Describe the product, material feel, fit, and unique features…"></textarea>
+              </div>
+            </div>
+
+            <!-- Size & Colours -->
+            <div class="card">
+              <div class="card-title">Sizes & Colours</div>
+              <div class="form-group">
+                <label class="form-label">Available Sizes</label>
+                <div class="size-grid">
+                  <label class="size-chip"><input type="checkbox" value="XS" /> XS</label>
+                  <label class="size-chip"><input type="checkbox" value="S" /> S</label>
+                  <label class="size-chip"><input type="checkbox" value="M" checked /> M</label>
+                  <label class="size-chip"><input type="checkbox" value="L" checked /> L</label>
+                  <label class="size-chip"><input type="checkbox" value="XL" checked /> XL</label>
+                  <label class="size-chip"><input type="checkbox" value="XXL" /> XXL</label>
+                  <label class="size-chip"><input type="checkbox" value="3XL" /> 3XL</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Available Colours</label>
+                <div class="color-grid">
+                  <label class="color-chip"><input type="checkbox" value="Black" checked /><span class="color-swatch"
+                      style="background:#111"></span> Black</label>
+                  <label class="color-chip"><input type="checkbox" value="White" /><span class="color-swatch"
+                      style="background:#f5f5f5"></span> White</label>
+                  <label class="color-chip"><input type="checkbox" value="Navy" /><span class="color-swatch"
+                      style="background:#1a2744"></span> Navy</label>
+                  <label class="color-chip"><input type="checkbox" value="Olive" /><span class="color-swatch"
+                      style="background:#4a5240"></span> Olive</label>
+                  <label class="color-chip"><input type="checkbox" value="Red" /><span class="color-swatch"
+                      style="background:#c0392b"></span> Red</label>
+                  <label class="color-chip"><input type="checkbox" value="Maroon" /><span class="color-swatch"
+                      style="background:#7b1c1c"></span> Maroon</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Design Upload -->
+            <div class="card">
+              <div class="card-title">Design File</div>
+              <div class="upload-zone" id="upload-zone">
+                <div class="upload-icon">🎨</div>
+                <div class="upload-title">Drag & Drop your design here</div>
+                <div class="upload-sub">PNG, SVG, or AI file · Transparent background recommended · Min 2000×2000px
+                </div>
+                <button class="btn btn-primary" style="margin-top:16px">Browse File</button>
+              </div>
+            </div>
+
+          </div><!-- end col-main -->
+
+          <!-- RIGHT COLUMN (Sidebar) -->
+          <div class="add-product-col-side">
+
+            <!-- Pricing -->
+            <div class="card">
+              <div class="card-title">Pricing</div>
+              <div class="form-group">
+                <label class="form-label">Cloth Cost (₹)</label>
+                <input class="form-input" id="ap-cloth-cost" type="number" placeholder="180" min="0" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Print Cost (₹)</label>
+                <input class="form-input" id="ap-print-cost" type="number" placeholder="120" min="0" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Commission (%)</label>
+                <input class="form-input" id="ap-commission" type="number" placeholder="20" min="0" max="100" />
+              </div>
+              <div class="price-preview" id="ap-price-preview">
+                <div class="price-preview-row">
+                  <span>Base cost</span>
+                  <span id="ap-preview-cost">₹0</span>
+                </div>
+                <div class="price-preview-row">
+                  <span>Your commission</span>
+                  <span id="ap-preview-comm" style="color:var(--teal)">₹0</span>
+                </div>
+                <div class="price-preview-row total">
+                  <span>Customer pays</span>
+                  <span id="ap-preview-total">₹0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Print Partner -->
+            <div class="card">
+              <div class="card-title">Assign Print Partner</div>
+              <div class="form-group">
+                <select class="form-input" id="ap-partner">
+                  <option value="">Select partner…</option>
+                  <option>PrintX — Chennai (Score: 94)</option>
+                  <option>ColorPro — Bangalore (Score: 88)</option>
+                  <option>TeeLink — Hyderabad (Score: 91)</option>
+                  <option>InkMate — Mumbai (Score: 72)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Status -->
+            <div class="card">
+              <div class="card-title">Status</div>
+              <div class="status-radio-group">
+                <label class="status-radio">
+                  <input type="radio" name="ap-status" value="active" checked />
+                  <span class="status-radio-box">
+                    <span class="status-radio-title">Active</span>
+                    <span class="status-radio-sub">Live on the store immediately</span>
+                  </span>
+                </label>
+                <label class="status-radio">
+                  <input type="radio" name="ap-status" value="draft" />
+                  <span class="status-radio-box">
+                    <span class="status-radio-title">Draft</span>
+                    <span class="status-radio-sub">Hidden from store until published</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+          </div><!-- end col-side -->
+        </div><!-- end add-product-layout -->
+      </div><!-- end page-add-product -->
+
+    </main>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

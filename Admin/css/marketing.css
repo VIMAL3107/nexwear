@@ -1,0 +1,14 @@
+/* ═══ MARKETING PAGE STYLES ═══ */
+
+#page-marketing .data-table td:nth-child(3) {
+    max-width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-style: italic;
+    font-size: 12px;
+}
+
+#page-marketing .data-table .primary {
+    color: var(--accent-secondary);
+}

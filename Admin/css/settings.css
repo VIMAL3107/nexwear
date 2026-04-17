@@ -1,0 +1,68 @@
+/* ═══ SETTINGS SPECIFIC STYLES ═══ */
+
+.toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 24px;
+}
+
+.toggle-row:last-child {
+    border-bottom: none;
+}
+
+.toggle-label {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-main);
+}
+
+.toggle-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    width: 48px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    position: relative;
+    cursor: pointer;
+    transition: var(--t-fast);
+    flex-shrink: 0;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    transition: var(--t-fast);
+}
+
+.toggle-switch.on {
+    background: var(--teal);
+    border-color: var(--teal);
+}
+
+.toggle-switch.on::after {
+    left: 26px;
+    background: white;
+}
+
+.grid-2-eq {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}

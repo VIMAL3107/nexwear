@@ -1,0 +1,322 @@
+/* ═══ PRODUCTS PAGE STYLES ═══ */
+
+#page-products .kpi-card {
+    border-bottom: 3px solid var(--teal);
+}
+
+#page-products .data-table td:nth-child(3),
+#page-products .data-table td:nth-child(4) {
+    color: var(--teal);
+    font-weight: 600;
+}
+
+#page-products .data-table td:nth-child(6) {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* ═══ SUBMENU STYLES ═══ */
+
+.nav-parent {
+    cursor: pointer;
+}
+
+.nav-chevron {
+    margin-left: auto;
+    font-size: 18px;
+    color: var(--text-muted);
+    transition: transform 0.25s ease;
+    line-height: 1;
+}
+
+.nav-chevron.open {
+    transform: rotate(90deg);
+    color: var(--teal);
+}
+
+.nav-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-submenu.open {
+    max-height: 200px;
+}
+
+.nav-sub-item {
+    padding: 9px 28px 9px 48px;
+    font-size: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--t-fast);
+}
+
+.nav-sub-item:hover {
+    color: var(--text-main);
+    background: var(--bg-hover);
+}
+
+.nav-sub-item.active {
+    color: var(--teal);
+    font-weight: 600;
+}
+
+.nav-sub-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* ═══ ADD NEW DRESS PAGE ═══ */
+
+.add-product-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 28px;
+    align-items: start;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 13px 16px;
+    font-size: 15px;
+    color: var(--text-main);
+    font-family: inherit;
+    outline: none;
+    transition: var(--t-fast);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(45, 203, 142, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* Size Chips */
+.size-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.size-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--t-fast);
+    color: var(--text-dim);
+    user-select: none;
+}
+
+.size-chip input[type="checkbox"] {
+    display: none;
+}
+
+.size-chip:has(input:checked) {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+}
+
+.size-chip:hover {
+    border-color: var(--teal);
+    color: var(--text-main);
+}
+
+/* Colour Chips */
+.color-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.color-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--t-fast);
+    color: var(--text-dim);
+    user-select: none;
+}
+
+.color-chip input[type="checkbox"] {
+    display: none;
+}
+
+.color-chip:has(input:checked) {
+    border-color: var(--teal);
+    color: var(--text-main);
+    background: rgba(45, 203, 142, 0.06);
+}
+
+.color-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+}
+
+/* Upload Zone */
+.upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    padding: 48px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--t-fast);
+}
+
+.upload-zone:hover {
+    border-color: var(--teal);
+    background: rgba(45, 203, 142, 0.03);
+}
+
+.upload-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.upload-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.upload-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Price Preview */
+.price-preview {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 18px;
+}
+
+.price-preview-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    padding: 8px 0;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+}
+
+.price-preview-row:last-child {
+    border-bottom: none;
+}
+
+.price-preview-row.total {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-main);
+    padding-top: 12px;
+    margin-top: 4px;
+}
+
+/* Status Radio */
+.status-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.status-radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--t-fast);
+}
+
+.status-radio input[type="radio"] {
+    display: none;
+}
+
+.status-radio:has(input:checked) {
+    border-color: var(--teal);
+    background: rgba(45, 203, 142, 0.05);
+}
+
+.status-radio-box {
+    flex: 1;
+}
+
+.status-radio-title {
+    font-size: 15px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 3px;
+    color: var(--text-main);
+}
+
+.status-radio-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+    display: block;
+}

@@ -1,0 +1,18 @@
+/* ═══ REFUNDS PAGE STYLES ═══ */
+
+#page-refunds .top-badge.alert {
+    background: var(--red-bg);
+    color: var(--red);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 11px;
+}
+
+#page-refunds .data-table td {
+    vertical-align: middle;
+}
+
+#page-refunds .data-table tr:hover {
+    background: rgba(232, 85, 85, 0.02);
+}

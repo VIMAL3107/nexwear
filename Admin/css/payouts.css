@@ -1,0 +1,16 @@
+/* ═══ PAYOUTS PAGE STYLES ═══ */
+
+#page-payouts .btn-teal {
+    background: var(--teal);
+    color: white;
+    border: none;
+}
+
+#page-payouts .btn-teal:hover {
+    filter: brightness(1.1);
+}
+
+#page-payouts .data-table td:nth-child(5) {
+    font-weight: 700;
+    color: var(--teal);
+}
