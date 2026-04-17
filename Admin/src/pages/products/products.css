@@ -38,10 +38,19 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    /* guarantee proper block rendering */
 }
 
 .nav-submenu.open {
-    max-height: 200px;
+    max-height: 500px;
+    /* increased to prevent cutoffs */
+}
+
+@media (max-width: 900px) {
+    .add-product-layout {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 .nav-sub-item {

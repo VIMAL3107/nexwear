@@ -91,6 +91,22 @@ body {
     height: 100vh;
 }
 
+@media (max-width: 900px) {
+    .shell {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .nav {
+        /* On extreme small screens like iPhone, hide the sidebar or let it flow normally */
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+}
+
 /* ═══ SIDEBAR ═══ */
 .nav {
     background: var(--bg-sidebar);
