@@ -1,17 +1,17 @@
 /* ═══ IMPORTS ═══ */
-@import url('components.css');
-@import url('dashboard.css');
-@import url('orders.css');
-@import url('products.css');
-@import url('designs.css');
-@import url('partners.css');
-@import url('payouts.css');
-@import url('customers.css');
-@import url('refunds.css');
-@import url('analytics.css');
-@import url('marketing.css');
-@import url('settings.css');
-@import url('agent.css');
+@import url('../components/components.css');
+@import url('../pages/dashboard/dashboard.css');
+@import url('../pages/orders/orders.css');
+@import url('../pages/products/products.css');
+@import url('../pages/designs/designs.css');
+@import url('../pages/partners/partners.css');
+@import url('../pages/payouts/payouts.css');
+@import url('../pages/customers/customers.css');
+@import url('../pages/refunds/refunds.css');
+@import url('../pages/analytics/analytics.css');
+@import url('../pages/marketing/marketing.css');
+@import url('../pages/settings/settings.css');
+@import url('../pages/agent/agent.css');
 
 
 /* ═══ DESIGN SYSTEM ═══ */

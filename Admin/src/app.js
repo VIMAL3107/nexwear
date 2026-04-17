@@ -5,19 +5,19 @@
  */
 
 // Import Page Modules
-import './dashboard.js';
-import './orders.js';
-import './products.js';
-import './designs.js';
-import './partners.js';
-import './payouts.js';
-import './customers.js';
-import './refunds.js';
-import './analytics.js';
-import './marketing.js';
-import './settings.js';
-import './agent.js';
-import { AddProduct } from './add-product.js';
+import './pages/dashboard/dashboard.js';
+import './pages/orders/orders.js';
+import './pages/products/products.js';
+import './pages/designs/designs.js';
+import './pages/partners/partners.js';
+import './pages/payouts/payouts.js';
+import './pages/customers/customers.js';
+import './pages/refunds/refunds.js';
+import './pages/analytics/analytics.js';
+import './pages/marketing/marketing.js';
+import './pages/settings/settings.js';
+import './pages/agent/agent.js';
+import { AddProduct } from './pages/products/add-product.js';
 
 // ── Bootstrap (ES modules run after DOM is ready — no DOMContentLoaded needed) ──
 initToasts();      // define showToast first so modules can call it
