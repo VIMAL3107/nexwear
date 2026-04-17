@@ -89,21 +89,16 @@ body {
     display: grid;
     grid-template-columns: 256px 1fr;
     height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .shell {
         grid-template-columns: 1fr;
         height: auto;
         min-height: 100vh;
-    }
-
-    .nav {
-        /* On extreme small screens like iPhone, hide the sidebar or let it flow normally */
-        position: relative;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
+        overflow-y: auto;
     }
 }
 
@@ -115,6 +110,18 @@ body {
     flex-direction: column;
     padding: 28px 0;
     overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+@media (max-width: 1024px) {
+    .nav {
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
 }
 
 .nav-logo {
@@ -232,11 +239,21 @@ body {
 .content {
     overflow-y: auto;
     padding: 40px 52px;
+    height: 100vh;
+    background: var(--bg-shell);
+}
+
+@media (max-width: 1024px) {
+    .content {
+        height: auto;
+        padding: 30px 20px;
+    }
 }
 
 .page {
     display: none;
     animation: slideUp var(--t-slow);
+    min-height: 100%;
 }
 
 .page.active {
