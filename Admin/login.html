@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexwear Admin - Login</title>
+    <!-- Google Fonts for Outfit and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #26ba8a;
+            --primary-hover: #1f9e74;
+            --primary-light: #e6fbf3;
+            --dark: #111827;
+            --gray-dark: #374151;
+            --gray: #6b7280;
+            --gray-light: #f3f4f6;
+            --border: #e5e7eb;
+            --white: #ffffff;
+            --bg-page: #daf2ea;
+            --font-outfit: 'Outfit', sans-serif;
+            --font-inter: 'Inter', sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-inter);
+            background-color: var(--bg-page);
+            background: linear-gradient(135deg, #f2faf7 0%, #daf2ea 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--dark);
+            padding: 24px;
+        }
+
+        .login-container {
+            width: 100%;
+            height: 100%;
+            max-width: 1060px;
+            max-height: 640px;
+            display: flex;
+            background-color: var(--white);
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(12, 37, 29, 0.08);
+            z-index: 10;
+        }
+
+        .login-left {
+            width: 440px;
+            min-width: 400px;
+            background-color: var(--white);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+            overflow-y: auto;
+        }
+
+        /* Custom Scrollbar for form card if content overflows */
+        .login-left::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .login-left::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .login-left::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-text {
+            font-family: var(--font-outfit);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .welcome-section {
+            margin-top: 24px;
+        }
+
+        .welcome-title {
+            font-family: var(--font-outfit);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .welcome-subtitle {
+            font-size: 15px;
+            color: var(--gray);
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-dark);
+            margin-bottom: 6px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .form-input {
+            width: 100%;
+            height: 48px;
+            padding: 0 48px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: var(--font-inter);
+            color: var(--dark);
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(38, 186, 138, 0.12);
+        }
+
+        .form-input:focus+.input-icon {
+            color: var(--primary);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 16px;
+            color: var(--gray);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            user-select: none;
+        }
+
+        .password-toggle:hover {
+            color: var(--dark);
+        }
+
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        /* Custom Checkbox styling */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-dark);
+            user-select: none;
+        }
+
+        .checkbox-container input {
+            display: none;
+        }
+
+        .checkbox-custom {
+            width: 20px;
+            height: 20px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 6px;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .checkbox-container:hover .checkbox-custom {
+            border-color: var(--primary);
+        }
+
+        .checkbox-container input:checked+.checkbox-custom {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .checkbox-custom svg {
+            opacity: 0;
+            transform: scale(0.6);
+            transition: var(--transition);
+        }
+
+        .checkbox-container input:checked+.checkbox-custom svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .forgot-password {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+            color: var(--primary-hover);
+        }
+
+        .btn-login {
+            width: 100%;
+            height: 48px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--font-inter);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 4px 12px rgba(38, 186, 138, 0.2);
+        }
+
+        .btn-login:active {
+            transform: scale(0.98);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 18px 0;
+            color: #9ca3af;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .divider:not(:empty)::before {
+            margin-right: 12px;
+        }
+
+        .divider:not(:empty)::after {
+            margin-left: 12px;
+        }
+
+        .social-container {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-social {
+            flex: 1;
+            height: 48px;
+            border: 1.5px solid var(--border);
+            background-color: var(--white);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-dark);
+            font-family: var(--font-inter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-social:hover {
+            background-color: var(--gray-light);
+            border-color: #d1d5db;
+        }
+
+        .btn-social:active {
+            transform: scale(0.98);
+        }
+
+        .signup-text {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 20px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .signup-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+            color: var(--primary-hover);
+        }
+
+        /* Right Showcase Panel */
+        .login-right {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background-image: url('./background.jpg');
+            background-size: cover;
+            background-position: right center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+        }
+
+        /* Soft premium gradient overlay */
+        .login-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.0) 100%);
+            pointer-events: none;
+        }
+
+        .showcase-header {
+            max-width: 450px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .showcase-title {
+            font-family: var(--font-outfit);
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .showcase-subtitle {
+            font-size: 14px;
+            color: var(--gray-dark);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .showcase-badge {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .showcase-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(38, 186, 138, 0.08);
+        }
+
+        .badge-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .badge-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            font-size: 11px;
+            font-weight: 700;
+            color: #1e293b;
+            text-align: left;
+        }
+
+
+
+        /* Toast container for interactions */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            pointer-events: none;
+        }
+
+        .toast {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CSS spinner */
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 150;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: -35;
+            }
+
+            100% {
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: -124;
+            }
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 1200px) {
+            .login-right {
+                padding: 40px;
+            }
+
+            .showcase-title {
+                font-size: 34px;
+            }
+
+            .showcase-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            body {
+                overflow-y: auto;
+                height: auto;
+                padding: 40px 20px;
+            }
+
+            .login-container {
+                height: auto;
+                max-height: none;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .login-left {
+                width: 100%;
+                max-width: 480px;
+                height: auto;
+                overflow-y: visible;
+                padding: 40px 28px;
+            }
+
+            .login-right {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- Left Column: White Login Card -->
+        <div class="login-left">
+            <!-- Brand Logo -->
+            <div class="logo-container">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="12" fill="#26ba8a" />
+                    <!-- Stylized leather tag wallet with a latch -->
+                    <path
+                        d="M14 15C14 13.8954 14.8954 13 16 13H24C25.1046 13 26 13.8954 26 15V25C26 26.1046 25.1046 27 24 27H16C14.8954 27 14 26.1046 14 25V15Z"
+                        fill="white" fill-opacity="0.2" />
+                    <path
+                        d="M26 18C26 19.5 24.5 21 22 21H18C15.5 21 14 19.5 14 18V24C14 25.6569 15.3431 27 17 27H23C24.6569 27 26 25.6569 26 24V18Z"
+                        fill="white" />
+                    <circle cx="20" cy="18" r="2.5" fill="#26ba8a" />
+                </svg>
+                <span class="logo-text">Nex<span>Wear</span></span>
+            </div>
+
+            <!-- Welcome Header -->
+            <div class="welcome-section">
+                <h1 class="welcome-title">Welcome back! 👋</h1>
+                <p class="welcome-subtitle">Login to your account and continue</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="form-container">
+                <div class="form-group">
+                    <label class="form-label" for="username">Email address</label>
+                    <div class="input-wrapper">
+                        <div class="input-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                <path d="M22 7l-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </div>
+                        <input class="form-input" type="email" id="username" placeholder="Enter your email" required
+                            autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="input-wrapper">
+                        <div class="input-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <input class="form-input" type="password" id="password" placeholder="Enter your password"
+                            required autocomplete="current-password">
+                        <div class="password-toggle" id="password-toggle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-open">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-closed"
+                                style="display: none;">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                                </path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="form-options">
+                    <label class="checkbox-container" id="remember-me-label">
+                        <input type="checkbox" id="remember-me" checked>
+                        <span class="checkbox-custom">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M2.5 6L4.5 8L9.5 3" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-login">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    Login
+                </button>
+            </form>
+
+            <div class="divider">or continue with</div>
+
+            <!-- Social Login Buttons -->
+            <div class="social-container">
+                <button class="btn-social" id="btn-google" type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24">
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            fill="#4285F4" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                            fill="#34A853" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                            fill="#FBBC05" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                            fill="#EA4335" />
+                    </svg>
+                    Google
+                </button>
+                <button class="btn-social" id="btn-microsoft" type="button">
+                    <svg width="18" height="18" viewBox="0 0 23 23">
+                        <rect x="0" y="0" width="10.5" height="10.5" fill="#f25022" />
+                        <rect x="11.5" y="0" width="10.5" height="10.5" fill="#7fba00" />
+                        <rect x="0" y="11.5" width="10.5" height="10.5" fill="#00a4ef" />
+                        <rect x="11.5" y="11.5" width="10.5" height="10.5" fill="#ffb900" />
+                    </svg>
+                    Microsoft
+                </button>
+            </div>
+
+            <!-- Sign Up Bottom Text -->
+            <p class="signup-text">
+                Don't have an account? <a href="#" class="signup-link" id="signup-link">Sign up</a>
+            </p>
+        </div>
+
+        <!-- Right Column: Visual Showcase -->
+        <div class="login-right">
+            <!-- Header Text & Badges Overlay -->
+            <div class="showcase-header">
+                <h2 class="showcase-title">Premium quality clothing for every style</h2>
+                <p class="showcase-subtitle">Discover the latest trends and express your style with NexWear.</p>
+                <div class="badges-container">
+                    <div class="showcase-badge">
+                        <div class="badge-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--primary)"
+                                stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <polyline points="9 11 12 14 17 9" stroke="white" fill="none" stroke-width="2.5">
+                                </polyline>
+                            </svg>
+                        </div>
+                        <div class="badge-text">
+                            <span>Premium</span>
+                            <span>Quality</span>
+                        </div>
+                    </div>
+                    <div class="showcase-badge">
+                        <div class="badge-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--primary)"
+                                stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
+                                </path>
+                                <circle cx="7" cy="7" r="1.5" fill="white" stroke="none"></circle>
+                            </svg>
+                        </div>
+                        <div class="badge-text">
+                            <span>Best</span>
+                            <span>Prices</span>
+                        </div>
+                    </div>
+                    <div class="showcase-badge">
+                        <div class="badge-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--primary)"
+                                stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13" rx="1"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16" fill="var(--primary)"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5" fill="white" stroke="var(--primary)"
+                                    stroke-width="2"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5" fill="white" stroke="var(--primary)"
+                                    stroke-width="2"></circle>
+                            </svg>
+                        </div>
+                        <div class="badge-text">
+                            <span>Fast</span>
+                            <span>Delivery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script>
+        // Custom Toast Notification
+        const showToast = (message) => {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            container.appendChild(toast);
+
+            // Trigger reflow to apply transition
+            toast.offsetHeight;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        };
+
+        // Password Visibility Toggle
+        const passwordInput = document.getElementById('password');
+        const passwordToggle = document.getElementById('password-toggle');
+        const eyeOpen = passwordToggle.querySelector('.eye-open');
+        const eyeClosed = passwordToggle.querySelector('.eye-closed');
+
+        passwordToggle.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeOpen.style.display = 'none';
+                eyeClosed.style.display = 'block';
+            } else {
+                passwordInput.type = 'password';
+                eyeOpen.style.display = 'block';
+                eyeClosed.style.display = 'none';
+            }
+        });
+
+        // Form Submit Handler
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const btn = document.querySelector('.btn-login');
+
+            // Show loading animation on the login button
+            btn.innerHTML = `
+                <svg class="spinner" width="20" height="20" viewBox="0 0 50 50" style="animation: rotate 2s linear infinite; margin-right: 8px;">
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" style="stroke-dasharray: 1, 150; stroke-dashoffset: 0; stroke: #ffffff; animation: dash 1.5s ease-in-out infinite;"></circle>
+                </svg>
+                Signing in...
+            `;
+            btn.disabled = true;
+            btn.style.opacity = '0.9';
+
+            // Short artificial delay for a premium interactive feel
+            setTimeout(() => {
+                sessionStorage.setItem('admin_token', 'mock_token_123');
+                window.location.replace('./index.html');
+            }, 1200);
+        });
+
+        // Social Button Click Handlers
+        document.getElementById('btn-google').addEventListener('click', () => {
+            showToast('Connecting with Google Account...');
+            setTimeout(() => {
+                sessionStorage.setItem('admin_token', 'mock_token_google');
+                window.location.replace('./index.html');
+            }, 1500);
+        });
+
+        document.getElementById('btn-microsoft').addEventListener('click', () => {
+            showToast('Connecting with Microsoft Active Directory...');
+            setTimeout(() => {
+                sessionStorage.setItem('admin_token', 'mock_token_microsoft');
+                window.location.replace('./index.html');
+            }, 1500);
+        });
+
+        // Interactive auxiliary links
+        document.querySelector('.forgot-password').addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('A secure password reset link has been dispatched to your email.');
+        });
+
+        document.getElementById('signup-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('Administrative registration is locked. Contact your primary admin for access.');
+        });
+
+
+    </script>
+</body>
+
+</html>

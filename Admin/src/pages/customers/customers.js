@@ -20,18 +20,48 @@ export const Customers = {
         const tbody = document.getElementById('customers-tbody');
         if (!tbody) return;
 
-        tbody.innerHTML = this.data.map(c => `
-            <tr>
-                <td class="primary">${c.name}</td>
-                <td>${c.city}</td>
-                <td>${c.orders}</td>
-                <td>${c.spent}</td>
-                <td><span class="pill pill-teal">${c.segment}</span></td>
-                <td>10 Apr 2026</td>
-                <td><span class="pill pill-teal">${c.status}</span></td>
-                <td><button class="btn">History</button></td>
-            </tr>
-        `).join('');
+        tbody.innerHTML = '';
+
+        this.data.forEach(c => {
+            const tr = document.createElement('tr');
+
+            const nameCell = document.createElement('td');
+            nameCell.className = 'primary';
+            nameCell.textContent = c.name;
+
+            const cityCell = document.createElement('td');
+            cityCell.textContent = c.city;
+
+            const ordersCell = document.createElement('td');
+            ordersCell.textContent = c.orders;
+
+            const spentCell = document.createElement('td');
+            spentCell.textContent = c.spent;
+
+            const segmentCell = document.createElement('td');
+            const segmentPill = document.createElement('span');
+            segmentPill.className = 'pill pill-teal';
+            segmentPill.textContent = c.segment;
+            segmentCell.appendChild(segmentPill);
+
+            const dateCell = document.createElement('td');
+            dateCell.textContent = '10 Apr 2026';
+
+            const statusCell = document.createElement('td');
+            const statusPill = document.createElement('span');
+            statusPill.className = 'pill pill-teal';
+            statusPill.textContent = c.status;
+            statusCell.appendChild(statusPill);
+
+            const actionCell = document.createElement('td');
+            const historyBtn = document.createElement('button');
+            historyBtn.className = 'btn';
+            historyBtn.textContent = 'History';
+            actionCell.appendChild(historyBtn);
+
+            tr.append(nameCell, cityCell, ordersCell, spentCell, segmentCell, dateCell, statusCell, actionCell);
+            tbody.appendChild(tr);
+        });
     }
 };
 

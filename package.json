@@ -1,0 +1,12 @@
+{
+  "name": "nexwear",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix Backend && npm install --prefix Website && npm install --prefix Admin",
+    "dev:website": "npm run dev --prefix Website",
+    "dev:admin": "npm run dev --prefix Admin",
+    "dev:backend": "npm run dev --prefix Backend",
+    "dev": "npx concurrently --kill-others-on-fail -n \"backend,website,admin\" -c \"yellow,cyan,magenta\" \"npm run dev:backend\" \"npm run dev:website\" \"npm run dev:admin\""
+  }
+}

@@ -7,13 +7,11 @@ import FeaturedCollection from '../components/home/FeaturedCollection';
 
 const Home = () => {
     return (
-        <div className="app-container">
-            <Navbar />
+        <>
             <Hero />
             <Philosophy />
             <FeaturedCollection />
-            <Footer />
-        </div>
+        </>
     );
 };
 

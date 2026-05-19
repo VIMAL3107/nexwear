@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexwear Admin — T-Shirt Platform</title>
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Inter and Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="src/styles/main.css" />
 </head>
@@ -20,24 +20,85 @@
 
     <!-- ═══ SIDEBAR NAVIGATION ═══ -->
     <nav class="nav">
-      <div class="nav-logo">Nex<span>Wear</span></div>
-      <div class="nav-agent">
-        <span class="agent-pulse"></span>
-        <span class="agent-text">Agent active · 342 actions today</span>
+      <!-- Brand Logo Header -->
+      <div class="nav-logo-container" style="display:flex; align-items:center; gap:12px; padding: 0 24px; margin-bottom: 24px;">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="12" fill="#22C55E" />
+              <path d="M14 15C14 13.8954 14.8954 13 16 13H24C25.1046 13 26 13.8954 26 15V25C26 26.1046 25.1046 27 24 27H16C14.8954 27 14 26.1046 14 25V15Z" fill="white" fill-opacity="0.2" />
+              <path d="M26 18C26 19.5 24.5 21 22 21H18C15.5 21 14 19.5 14 18V24C14 25.6569 15.3431 27 17 27H23C24.6569 27 26 25.6569 26 24V18Z" fill="white" />
+              <circle cx="20" cy="18" r="2.5" fill="#22C55E" />
+          </svg>
+          <span style="font-family:'Outfit', sans-serif; font-size:21px; font-weight:700; color:#0f172a; display:flex; align-items:center;">Nex<span style="color:#22C55E">Wear</span></span>
       </div>
 
-      <div class="nav-section">Main</div>
-      <div class="nav-item active" data-page="dashboard">
-        <span class="nav-dot" style="background:var(--accent-primary)"></span>
+      <!-- Active Agent Telemetry Info -->
+      <div class="nav-agent" style="margin: 0 16px 24px; padding: 12px 14px; background:#f3faf7; border: 1px solid rgba(34, 197, 94, 0.15); border-radius: 12px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: #1e293b;">
+        <span class="agent-pulse" style="width:8px; height:8px; background:#22C55E; border-radius:50%; box-shadow:0 0 8px #22C55E; flex-shrink:0;"></span>
+        <span class="agent-text" style="font-weight: 500; font-size: 12px;">Agent running · 3 items alert</span>
+      </div>
+
+      <div class="nav-section">MAIN</div>
+      
+      <!-- Dashboard -->
+      <div class="nav-item nav-parent active" data-page="dashboard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
         Dashboard
-        <span class="nav-badge">3</span>
+        <span class="nav-chevron open">›</span>
       </div>
-      <div class="nav-item" data-page="orders">
-        <span class="nav-dot" style="background:var(--accent-secondary)"></span>
+      <div class="nav-submenu open" id="submenu-dashboard">
+        <div class="nav-sub-item active" data-page="dashboard">
+          <span class="nav-sub-dot"></span> Overview
+        </div>
+        <div class="nav-sub-item" data-page="live-feed">
+          <span class="nav-sub-dot"></span> Live Feed
+        </div>
+        <div class="nav-sub-item" data-page="inventory-alerts">
+          <span class="nav-sub-dot"></span> Stock Alerts
+        </div>
+        <div class="nav-sub-item" data-page="notif-center">
+          <span class="nav-sub-dot"></span> Admin Alerts
+        </div>
+        <div class="nav-sub-item" data-page="anomaly">
+          <span class="nav-sub-dot"></span> Anomaly AI
+        </div>
+      </div>
+
+      <!-- Orders -->
+      <div class="nav-item nav-parent" data-page="orders">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
         Orders
+        <span class="nav-chevron">›</span>
       </div>
+      <div class="nav-submenu" id="submenu-orders">
+        <div class="nav-sub-item" data-page="orders">
+          <span class="nav-sub-dot"></span> All Orders
+        </div>
+        <div class="nav-sub-item" data-page="bulk-orders">
+          <span class="nav-sub-dot"></span> Bulk Orders
+        </div>
+        <div class="nav-sub-item" data-page="partner-assign">
+          <span class="nav-sub-dot"></span> Partner Assign
+        </div>
+        <div class="nav-sub-item" data-page="production">
+          <span class="nav-sub-dot"></span> Production
+        </div>
+        <div class="nav-sub-item" data-page="shipments">
+          <span class="nav-sub-dot"></span> Shipments
+        </div>
+        <div class="nav-sub-item" data-page="order-detail">
+          <span class="nav-sub-dot"></span> Order Detail
+        </div>
+        <div class="nav-sub-item" data-page="shipping-label">
+          <span class="nav-sub-dot"></span> Shipping Labels
+        </div>
+        <div class="nav-sub-item" data-page="qc-detail">
+          <span class="nav-sub-dot"></span> QC Detail
+        </div>
+      </div>
+
+      <!-- Products -->
       <div class="nav-item nav-parent" data-page="products">
-        <span class="nav-dot" style="background:var(--teal)"></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
         Products
         <span class="nav-chevron">›</span>
       </div>
@@ -46,51 +107,184 @@
           <span class="nav-sub-dot"></span> All Products
         </div>
         <div class="nav-sub-item" data-page="add-product">
-          <span class="nav-sub-dot" style="background:var(--teal)"></span> + Add New Dress
+          <span class="nav-sub-dot" style="background:#26ba8a"></span> + Add New
+        </div>
+        <div class="nav-sub-item" data-page="variants">
+          <span class="nav-sub-dot"></span> Variants
+        </div>
+        <div class="nav-sub-item" data-page="seo">
+          <span class="nav-sub-dot"></span> SEO Metadata
+        </div>
+        <div class="nav-sub-item" data-page="bulk-import">
+          <span class="nav-sub-dot"></span> Bulk Import
+        </div>
+        <div class="nav-sub-item" data-page="reviews">
+          <span class="nav-sub-dot"></span> Review Moderation
         </div>
       </div>
-      <div class="nav-item" data-page="designs">
-        <span class="nav-dot" style="background:var(--amber)"></span>
+
+      <!-- Designs -->
+      <div class="nav-item nav-parent" data-page="designs">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 14.5 3 16.5 4.5 18C5.5 19 6 20.5 6 22H12Z"></path><circle cx="7.5" cy="10.5" r="1.5"></circle><circle cx="11.5" cy="7.5" r="1.5"></circle><circle cx="16.5" cy="9.5" r="1.5"></circle><circle cx="15.5" cy="14.5" r="1.5"></circle></svg>
         Designs
+        <span class="nav-chevron">›</span>
+      </div>
+      <div class="nav-submenu" id="submenu-designs">
+        <div class="nav-sub-item" data-page="designs">
+          <span class="nav-sub-dot"></span> All Designs
+        </div>
+        <div class="nav-sub-item" data-page="design-approval">
+          <span class="nav-sub-dot"></span> Approval Flow
+        </div>
+        <div class="nav-sub-item" data-page="plagiarism-reports">
+          <span class="nav-sub-dot"></span> Plagiarism Reports
+        </div>
       </div>
 
-      <div class="nav-section">Business</div>
-      <div class="nav-item" data-page="partners">
-        <span class="nav-dot" style="background:var(--purple)"></span>
-        Partners
-      </div>
-      <div class="nav-item" data-page="payouts">
-        <span class="nav-dot" style="background:var(--teal)"></span>
-        Payouts
-      </div>
-      <div class="nav-item" data-page="customers">
-        <span class="nav-dot" style="background:var(--red)"></span>
+      <!-- Customers -->
+      <div class="nav-item nav-parent" data-page="customers">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         Customers
+        <span class="nav-chevron">›</span>
       </div>
-      <div class="nav-item" data-page="refunds">
-        <span class="nav-dot" style="background:var(--red)"></span>
-        Refunds
-        <span class="nav-badge">3</span>
-      </div>
-
-      <div class="nav-section">Intelligence</div>
-      <div class="nav-item" data-page="analytics">
-        <span class="nav-dot" style="background:var(--purple)"></span>
-        AI analytics
-      </div>
-      <div class="nav-item" data-page="marketing">
-        <span class="nav-dot" style="background:var(--amber)"></span>
-        Marketing
+      <div class="nav-submenu" id="submenu-customers">
+        <div class="nav-sub-item" data-page="customers">
+          <span class="nav-sub-dot"></span> All Users
+        </div>
+        <div class="nav-sub-item" data-page="customer-detail">
+          <span class="nav-sub-dot"></span> User Details
+        </div>
+        <div class="nav-sub-item" data-page="support-queue">
+          <span class="nav-sub-dot"></span> Support Queue
+        </div>
       </div>
 
-      <div class="nav-section">System</div>
-      <div class="nav-item" data-page="settings">
-        <span class="nav-dot" style="background:var(--text3)"></span>
+      <!-- Partners -->
+      <div class="nav-item nav-parent" data-page="partners">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        Partners
+        <span class="nav-chevron">›</span>
+      </div>
+      <div class="nav-submenu" id="submenu-partners">
+        <div class="nav-sub-item" data-page="partners">
+          <span class="nav-sub-dot"></span> All Partners
+        </div>
+        <div class="nav-sub-item" data-page="onboarding">
+          <span class="nav-sub-dot"></span> Onboarding
+        </div>
+        <div class="nav-sub-item" data-page="sla-monitor">
+          <span class="nav-sub-dot"></span> SLA Monitor
+        </div>
+        <div class="nav-sub-item" data-page="partner-chat">
+          <span class="nav-sub-dot"></span> Partner Chat
+        </div>
+        <div class="nav-sub-item" data-page="partner-reports">
+          <span class="nav-sub-dot"></span> Performance Reports
+        </div>
+      </div>
+
+      <!-- Payouts -->
+      <div class="nav-item nav-parent" data-page="payouts">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        Payouts
+        <span class="nav-chevron">›</span>
+      </div>
+      <div class="nav-submenu" id="submenu-payouts">
+        <div class="nav-sub-item" data-page="payouts">
+          <span class="nav-sub-dot"></span> Overview
+        </div>
+        <div class="nav-sub-item" data-page="payout-proc">
+          <span class="nav-sub-dot"></span> Processing
+        </div>
+      </div>
+
+      <!-- Reports -->
+      <div class="nav-item nav-parent" data-page="analytics">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        Reports
+        <span class="nav-chevron">›</span>
+      </div>
+      <div class="nav-submenu" id="submenu-analytics">
+        <div class="nav-sub-item" data-page="analytics">
+          <span class="nav-sub-dot"></span> Overview
+        </div>
+        <div class="nav-sub-item" data-page="heatmap">
+          <span class="nav-sub-dot"></span> Revenue Heatmap
+        </div>
+        <div class="nav-sub-item" data-page="forecasting">
+          <span class="nav-sub-dot"></span> Sales Forecast
+        </div>
+        <div class="nav-sub-item" data-page="segmentation">
+          <span class="nav-sub-dot"></span> Segmentation
+        </div>
+        <div class="nav-sub-item" data-page="feedback-ai">
+          <span class="nav-sub-dot"></span> Feedback AI
+        </div>
+        <div class="nav-sub-item" data-page="tax-reports">
+          <span class="nav-sub-dot"></span> Tax & GST Reports
+        </div>
+      </div>
+
+      <div class="nav-section">SYSTEM</div>
+
+      <!-- Settings -->
+      <div class="nav-item nav-parent" data-page="settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
         Settings
+        <span class="nav-chevron">›</span>
       </div>
-      <div class="nav-item" data-page="agent">
-        <span class="nav-dot" style="background:var(--text-muted)"></span>
+      <div class="nav-submenu" id="submenu-settings">
+        <div class="nav-sub-item" data-page="settings">
+          <span class="nav-sub-dot"></span> Global
+        </div>
+        <div class="nav-sub-item" data-page="tax-settings">
+          <span class="nav-sub-dot"></span> Tax & GST
+        </div>
+        <div class="nav-sub-item" data-page="tax-calc">
+          <span class="nav-sub-dot"></span> Tax Calculator
+        </div>
+        <div class="nav-sub-item" data-page="media-library">
+          <span class="nav-sub-dot"></span> Media Library
+        </div>
+        <div class="nav-sub-item" data-page="roles">
+          <span class="nav-sub-dot"></span> Role Management
+        </div>
+        <div class="nav-sub-item" data-page="audit-log">
+          <span class="nav-sub-dot"></span> Audit Log
+        </div>
+        <div class="nav-sub-item" data-page="policy-settings">
+          <span class="nav-sub-dot"></span> Policies
+        </div>
+        <div class="nav-sub-item" data-page="email-templates">
+          <span class="nav-sub-dot"></span> Email Templates
+        </div>
+        <div class="nav-sub-item" data-page="shipping-rates">
+          <span class="nav-sub-dot"></span> Shipping Rates
+        </div>
+        <div class="nav-sub-item" data-page="integrations">
+          <span class="nav-sub-dot"></span> API Integrations
+        </div>
+      </div>
+
+      <!-- Agent Config -->
+      <div class="nav-item nav-parent" data-page="agent">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
         Agent config
+        <span class="nav-chevron">›</span>
+      </div>
+      <div class="nav-submenu" id="submenu-agent">
+        <div class="nav-sub-item" data-page="agent">
+          <span class="nav-sub-dot"></span> Overview
+        </div>
+        <div class="nav-sub-item" data-page="agent-config">
+          <span class="nav-sub-dot"></span> Configuration
+        </div>
+      </div>
+
+      <!-- Log Out red action -->
+      <div class="nav-item" id="nav-logout" style="margin-top:20px; color:#ef4444; border-top: 1px solid #f1f5f9; padding-top: 20px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        Log Out
       </div>
     </nav>
 
@@ -101,237 +295,813 @@
          PAGE: DASHBOARD
     ══════════════════════════════ -->
       <div class="page active" id="page-dashboard">
-        <div class="topbar">
-          <div class="topbar-left">
-            <div class="page-title">Good morning, Rajan</div>
-            <div class="page-sub">Friday, 10 Apr 2026 · Nexwear agent running · 3 items need your attention</div>
+        <!-- Two-Column Layout Wrapper -->
+        <div style="display: flex; width: 100%; height: 100%;">
+          
+          <!-- Left Scrollable Area (74% width) -->
+          <div class="db-main-scroll">
+            <div class="topbar" style="display:flex; justify-content:between; align-items:center; margin-bottom: 10px; gap: 20px; flex-wrap: wrap;">
+          <div class="topbar-left" style="display:flex; flex-direction:column; gap:2px; min-width: 280px; flex: 1;">
+            <div class="page-title" style="font-family:'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: #0f172a;">Good morning, Rajan 👋</div>
+            <div class="page-sub" style="font-size: 12px; color: #64748b;">Friday, 10 Apr 2026 • Nexwear agent running • 3 items need your attention</div>
           </div>
-          <div class="topbar-right">
-            <span class="top-badge alert">3 escalations</span>
-            <span class="top-badge info">● Agent active</span>
-            <div class="avatar">RJ</div>
+          
+          <!-- Search Bar in Middle -->
+          <div class="topbar-search" style="flex: 1.2; max-width: 440px; min-width: 240px; position: relative;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; left: 16px; top: 50%; transform: translateY(-50%); pointer-events: none;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" placeholder="Search anything..." style="width: 100%; padding: 11px 16px 11px 48px; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 14px; background: #ffffff; color: #0f172a; outline: none; transition: all 0.2s;" />
           </div>
-        </div>
-
-        <div class="kpi-row col-4">
-          <div class="kpi-card">
-            <div class="kpi-label">Revenue today</div>
-            <div class="kpi-value">₹42,380</div>
-            <div class="kpi-sub text-up">↑ 18% vs yesterday</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Orders today</div>
-            <div class="kpi-value">87</div>
-            <div class="kpi-sub text-up">↑ 12 since 9am</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Your commission</div>
-            <div class="kpi-value">₹8,460</div>
-            <div class="kpi-sub text-dim">20% avg margin</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Pending payouts</div>
-            <div class="kpi-value">₹1,24,500</div>
-            <div class="kpi-sub text-dn">Due in 2 days</div>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <div class="card-title">Revenue — last 7 days <span class="card-title-right">₹2,45,480 total</span></div>
-            <div class="chart-bars" id="rev-chart-bars"></div>
-            <div style="display:flex;justify-content:space-between;margin-top:5px">
-              <span style="font-size:9px;color:var(--text3)">Apr 4</span>
-              <span style="font-size:9px;color:var(--text3)">Apr 10</span>
+          
+          <div class="topbar-right" style="display:flex; align-items:center; gap:16px;">
+            <!-- Notification Bell with circular badge exactly like mockup -->
+            <div style="position:relative; cursor:pointer; width:42px; height:42px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span style="position:absolute; top:-4px; right:-4px; background:#ef4444; color:#ffffff; font-family:'Outfit', sans-serif; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; border: 2px solid #ffffff;">3</span>
             </div>
           </div>
-          <div class="card">
-            <div class="card-title">Agent escalations <span class="card-title-right warn">3 need you</span></div>
-            <div id="alert-items-container"></div>
+        </div>
+ 
+        <div class="kpi-row col-4">
+          <div class="kpi-card">
+            <div class="kpi-icon-wrapper" style="background:#e6fbf3; color:#26ba8a;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            </div>
+            <div class="kpi-details">
+              <div class="kpi-label">Revenue today</div>
+              <div class="kpi-value">₹42,380</div>
+              <div class="kpi-sub text-up">↑ 18% vs yesterday</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon-wrapper" style="background:#e0f2fe; color:#0284c7;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </div>
+            <div class="kpi-details">
+              <div class="kpi-label">Orders today</div>
+              <div class="kpi-value">87</div>
+              <div class="kpi-sub text-up">↑ 12 since 9am</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon-wrapper" style="background:#f3e8ff; color:#8b5cf6;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <div class="kpi-details">
+              <div class="kpi-label">Your commission</div>
+              <div class="kpi-value">₹8,460</div>
+              <div class="kpi-sub text-dim">20% avg margin</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon-wrapper" style="background:#ffedd5; color:#ea580c;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+            </div>
+            <div class="kpi-details">
+              <div class="kpi-label">Pending payouts</div>
+              <div class="kpi-value">₹1,24,500</div>
+              <div class="kpi-sub" style="color: #ef4444; font-weight: 700; font-size: 13px;">Due in 2 days</div>
+            </div>
           </div>
         </div>
 
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-title">Top designs today <span class="card-title-right">by orders</span></div>
-            <div id="top-designs-grid" class="design-grid col-4"></div>
+        <div class="grid-2" style="margin-bottom: 12px; flex: 1;">
+          <div class="card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:24px; position:relative; min-height: 120px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+              <span style="font-family:'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #1F2937;">Revenue — last 7 days</span>
+              <span style="font-family:'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #22C55E;">₹2,45,480 total</span>
+            </div>
+            
+            <!-- Chart Container with Y-Axis and Gridlines -->
+            <div style="display: flex; gap: 12px; flex: 1; min-height: 90px; align-items: stretch; position: relative;">
+              <!-- Y-Axis Labels -->
+              <div style="display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; font-weight: 600; color: #6B7280; width: 36px; padding-bottom: 16px; height: 100%;">
+                <span>₹60K</span>
+                <span>₹40K</span>
+                <span>₹20K</span>
+                <span>₹0</span>
+              </div>
+              
+              <!-- Bars & Gridlines wrapper -->
+              <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; position: relative; height: 100%;">
+                <!-- Horizontal Gridlines background -->
+                <div style="position: absolute; inset: 0 0 16px 0; display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; z-index: 1;">
+                  <div style="border-bottom: 1px dotted #e2e8f0; width: 100%; height: 0;"></div>
+                  <div style="border-bottom: 1px dotted #e2e8f0; width: 100%; height: 0;"></div>
+                  <div style="border-bottom: 1px dotted #e2e8f0; width: 100%; height: 0;"></div>
+                  <div style="border-bottom: 1px solid #e2e8f0; width: 100%; height: 0;"></div>
+                </div>
+                
+                <!-- Bars Flex row -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 100%; padding-bottom: 16px; position: relative; z-index: 2;" id="rev-chart-bars">
+                  <!-- Bars populated dynamically by JS -->
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div class="card">
             <div class="card-title">Partner scores <span class="card-title-right">live · agent tracked</span></div>
+            
+            <!-- PrintX (94) -->
             <div class="partner-row">
               <div class="partner-init" style="background:var(--teal-bg);color:var(--teal)">PX</div>
               <div style="flex:1;margin-left:8px">
                 <div style="font-size:12px;font-weight:500;color:var(--text)">PrintX — Chennai</div>
-                <div class="score-wrap" style="margin-top:4px">
+                <div class="score-wrap" style="margin-top:3px">
                   <div class="score-track">
                     <div class="score-fill" style="width:94%;background:var(--teal)"></div>
                   </div><span style="font-size:11px;color:var(--teal);font-weight:500">94</span>
                 </div>
               </div>
             </div>
-            <div class="partner-row">
-              <div class="partner-init" style="background:var(--purple-bg);color:var(--purple2)">CP</div>
-              <div style="flex:1;margin-left:8px">
-                <div style="font-size:12px;font-weight:500;color:var(--text)">ColorPro — Bangalore</div>
-                <div class="score-wrap" style="margin-top:4px">
-                  <div class="score-track">
-                    <div class="score-fill" style="width:88%;background:var(--purple)"></div>
-                  </div><span style="font-size:11px;color:var(--purple2);font-weight:500">88</span>
-                </div>
-              </div>
-            </div>
-            <div class="partner-row">
-              <div class="partner-init" style="background:var(--amber-bg);color:var(--amber)">IM</div>
-              <div style="flex:1;margin-left:8px">
-                <div style="font-size:12px;font-weight:500;color:var(--text)">InkMate — Mumbai ⚠</div>
-                <div class="score-wrap" style="margin-top:4px">
-                  <div class="score-track">
-                    <div class="score-fill" style="width:72%;background:var(--amber)"></div>
-                  </div><span style="font-size:11px;color:var(--amber);font-weight:500">72</span>
-                </div>
-              </div>
-            </div>
+            
+            <!-- TeeLink (91) -->
             <div class="partner-row">
               <div class="partner-init" style="background:var(--blue-bg);color:var(--blue)">TL</div>
               <div style="flex:1;margin-left:8px">
                 <div style="font-size:12px;font-weight:500;color:var(--text)">TeeLink — Hyderabad</div>
-                <div class="score-wrap" style="margin-top:4px">
+                <div class="score-wrap" style="margin-top:3px">
                   <div class="score-track">
                     <div class="score-fill" style="width:91%;background:var(--blue)"></div>
                   </div><span style="font-size:11px;color:var(--blue);font-weight:500">91</span>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="card">
-            <div class="card-title">Revenue by city</div>
-            <div class="mini-bar-row"><span class="mini-bar-label">Chennai</span>
-              <div class="mini-bar-track">
-                <div class="mini-bar-fill" style="width:82%;background:var(--purple)"></div>
-              </div><span class="mini-bar-val">₹14.2k</span>
+            
+            <!-- ColorPro (88) -->
+            <div class="partner-row">
+              <div class="partner-init" style="background:var(--purple-bg);color:var(--purple2)">CP</div>
+              <div style="flex:1;margin-left:8px">
+                <div style="font-size:12px;font-weight:500;color:var(--text)">ColorPro — Bangalore</div>
+                <div class="score-wrap" style="margin-top:3px">
+                  <div class="score-track">
+                    <div class="score-fill" style="width:88%;background:var(--purple)"></div>
+                  </div><span style="font-size:11px;color:var(--purple2);font-weight:500">88</span>
+                </div>
+              </div>
             </div>
-            <div class="mini-bar-row"><span class="mini-bar-label">Bangalore</span>
-              <div class="mini-bar-track">
-                <div class="mini-bar-fill" style="width:65%;background:var(--purple)"></div>
-              </div><span class="mini-bar-val">₹11.3k</span>
-            </div>
-            <div class="mini-bar-row"><span class="mini-bar-label">Mumbai</span>
-              <div class="mini-bar-track">
-                <div class="mini-bar-fill" style="width:52%;background:var(--purple)"></div>
-              </div><span class="mini-bar-val">₹9.0k</span>
-            </div>
-            <div class="mini-bar-row"><span class="mini-bar-label">Hyderabad</span>
-              <div class="mini-bar-track">
-                <div class="mini-bar-fill" style="width:38%;background:var(--purple)"></div>
-              </div><span class="mini-bar-val">₹6.6k</span>
-            </div>
-            <div class="mini-bar-row"><span class="mini-bar-label">Delhi</span>
-              <div class="mini-bar-track">
-                <div class="mini-bar-fill" style="width:24%;background:var(--purple)"></div>
-              </div><span class="mini-bar-val">₹4.2k</span>
-            </div>
-            <div class="mini-bar-row"><span class="mini-bar-label">Others</span>
-              <div class="mini-bar-track">
-                <div class="mini-bar-fill" style="width:15%;background:var(--text3)"></div>
-              </div><span class="mini-bar-val">₹2.6k</span>
+            
+            <!-- InkMate (72) -->
+            <div class="partner-row">
+              <div class="partner-init" style="background:var(--amber-bg);color:var(--amber)">IM</div>
+              <div style="flex:1;margin-left:8px">
+                <div style="font-size:12px;font-weight:500;color:var(--text)">InkMate — Mumbai ⚠</div>
+                <div class="score-wrap" style="margin-top:3px">
+                  <div class="score-track">
+                    <div class="score-fill" style="width:72%;background:var(--amber)"></div>
+                  </div><span style="font-size:11px;color:var(--amber);font-weight:500">72</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-title"><span class="ai-chip"><span class="ai-dot"></span>Ask Nexwear agent</span><span
-              class="card-title-right accent">AI powered · queries live data</span></div>
-          <div class="ai-quick-btns">
-            <button class="ai-quick-btn" data-q="Which partner has the most delays this week?">Which partner delays
-              most? ↗</button>
-            <button class="ai-quick-btn" data-q="Top selling design category this month?">Top design category ↗</button>
-            <button class="ai-quick-btn" data-q="Why did revenue drop on Apr 7?">Why Apr 7 drop? ↗</button>
-            <button class="ai-quick-btn" data-q="Show pending payouts breakdown">Pending payouts ↗</button>
-            <button class="ai-quick-btn" data-q="Which city has the highest repeat purchase rate?">Best repeat city
-              ↗</button>
+        <div class="grid-3" style="flex: 1;">
+          <div class="card" style="position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px; margin-bottom: 0;">
+            <div class="card-title" style="font-family:'Outfit', sans-serif; font-size:15px; font-weight:700; color:#1F2937; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+              Top designs today 
+              <span style="font-family:'Outfit', sans-serif; font-size:12px; font-weight:500; color:#6B7280;">by orders</span>
+            </div>
+            <div style="position: relative; flex: 1; display: flex; align-items: center;">
+              <div id="top-designs-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%;"></div>
+              
+              <!-- Floating Next Chevron Button exactly like mockup -->
+              <div style="position: absolute; right: -12px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 10px rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10;" onclick="showToast('Loading more designs...', 'info')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </div>
           </div>
-          <div class="ai-input-row">
-            <input class="ai-input" id="dash-ai-input"
-              placeholder="Ask anything — e.g. show orders stuck in printing for more than 2 days…" />
-            <button class="ai-send" onclick="askAgent('dash-ai-input')">Ask agent</button>
+          <div class="card" style="background:#ffffff; border:1px solid #e2e8f0; border-radius:18px; padding:24px; display:flex; flex-direction:column; justify-content:space-between; margin-bottom: 0;">
+            <div class="card-title" style="font-family:'Outfit', sans-serif; font-size:15px; font-weight:700; color:#1F2937; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+              Agent escalations 
+              <span style="font-family:'Outfit', sans-serif; font-size:11px; font-weight:700; background:#ffedd5; color:#ea580c; border-radius:20px; padding:2px 8px;">3 need you</span>
+            </div>
+            <div id="alert-items-container" style="flex: 1; display: flex; flex-direction: column; justify-content: center;"></div>
+          </div>
+          <!-- NEW: Revenue by City card -->
+          <div class="card" style="background: #ffffff; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <h3 style="font-family:'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: #0f172a; margin: 0;">Revenue by city</h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#26ba8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 8px; flex: 1; justify-content: center;">
+              <!-- Chennai -->
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; font-weight: 600; color: #64748b; width: 72px; text-align: left;">Chennai</span>
+                <div style="flex: 1; height: 6px; background: #f1f5f9; border-radius: 3px; overflow: hidden;">
+                  <div style="width: 85%; height: 100%; background: #26ba8a; border-radius: 3px;"></div>
+                </div>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: #0f172a; width: 45px; text-align: right;">₹14.2k</span>
+              </div>
+
+              <!-- Bangalore -->
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; font-weight: 600; color: #64748b; width: 72px; text-align: left;">Bangalore</span>
+                <div style="flex: 1; height: 6px; background: #f1f5f9; border-radius: 3px; overflow: hidden;">
+                  <div style="width: 70%; height: 100%; background: #26ba8a; border-radius: 3px;"></div>
+                </div>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: #0f172a; width: 45px; text-align: right;">₹11.3k</span>
+              </div>
+
+              <!-- Mumbai -->
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; font-weight: 600; color: #64748b; width: 72px; text-align: left;">Mumbai</span>
+                <div style="flex: 1; height: 6px; background: #f1f5f9; border-radius: 3px; overflow: hidden;">
+                  <div style="width: 55%; height: 100%; background: #26ba8a; border-radius: 3px;"></div>
+                </div>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: #0f172a; width: 45px; text-align: right;">₹9.0k</span>
+              </div>
+
+              <!-- Hyderabad -->
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; font-weight: 600; color: #64748b; width: 72px; text-align: left;">Hyderabad</span>
+                <div style="flex: 1; height: 6px; background: #f1f5f9; border-radius: 3px; overflow: hidden;">
+                  <div style="width: 40%; height: 100%; background: #26ba8a; border-radius: 3px;"></div>
+                </div>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: #0f172a; width: 45px; text-align: right;">₹6.6k</span>
+              </div>
+
+              <!-- Delhi -->
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; font-weight: 600; color: #64748b; width: 72px; text-align: left;">Delhi</span>
+                <div style="flex: 1; height: 6px; background: #f1f5f9; border-radius: 3px; overflow: hidden;">
+                  <div style="width: 28%; height: 100%; background: #26ba8a; border-radius: 3px;"></div>
+                </div>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: #0f172a; width: 45px; text-align: right;">₹4.2k</span>
+              </div>
+
+              <!-- Others -->
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; font-weight: 600; color: #64748b; width: 72px; text-align: left;">Others</span>
+                <div style="flex: 1; height: 6px; background: #f1f5f9; border-radius: 3px; overflow: hidden;">
+                  <div style="width: 18%; height: 100%; background: #26ba8a; border-radius: 3px;"></div>
+                </div>
+                <span style="font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: #0f172a; width: 45px; text-align: right;">₹2.6k</span>
+              </div>
+            </div>
           </div>
         </div>
+      </div> <!-- End of Left main scroll container -->
+
+      <!-- Right Sidebar Area (26% width) -->
+      <div class="db-right-sidebar">
+        
+        <!-- User Profile Card -->
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; cursor: pointer;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" alt="Rajan Kumar" />
+            <div style="display: flex; flex-direction: column;">
+              <span style="font-family:'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #0f172a;">Rajan Kumar</span>
+              <span style="font-size: 11px; color: #64748b; font-weight: 500; margin-top: 2px;">Super Admin</span>
+            </div>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        
+        <!-- Unified Nexwear Agent AI Panel -->
+        <div class="card" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 14px; margin: 0; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02); flex: 1; min-height: 0; justify-content: space-between;">
+          
+          <!-- Header -->
+          <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <!-- Lilac Robot Icon Wrapper -->
+              <div style="width: 36px; height: 36px; border-radius: 10px; background: #f3e8ff; display: flex; align-items: center; justify-content: center; color: #8b5cf6;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                  <circle cx="12" cy="5" r="2"></circle>
+                  <path d="M12 7v4"></path>
+                  <line x1="8" y1="16" x2="8.01" y2="16"></line>
+                  <line x1="16" y1="16" x2="16.01" y2="16"></line>
+                </svg>
+              </div>
+              <!-- Title & Subtitle -->
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-family:'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #0f172a; line-height: 1.2;">Nexwear Agent</span>
+                <span style="font-size: 10px; color: #64748b; font-weight: 500; margin-top: 1px;">AI Assistant</span>
+              </div>
+            </div>
+            
+            <!-- Online Status -->
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <span style="width: 6px; height: 6px; background: #26ba8a; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #26ba8a;"></span>
+              <span style="font-size: 10px; font-weight: 600; color: #26ba8a;">Online</span>
+            </div>
+          </div>
+
+          <!-- Conversation Logs -->
+          <div style="display: flex; flex-direction: column; gap: 12px; flex: 1; justify-content: flex-start; overflow-y: auto; padding-right: 2px;">
+            <!-- Today Separator -->
+            <div style="display: flex; align-items: center; justify-content: center; margin: 2px 0;">
+              <span style="font-size: 9px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Today</span>
+            </div>
+
+            <!-- Message 1 (AI) -->
+            <div style="display: flex; flex-direction: column; align-self: flex-start; max-width: 85%; gap: 4px;">
+              <div style="background: #f1f5f9; color: #1e293b; border-radius: 16px 16px 16px 4px; padding: 10px 14px; font-size: 12px; line-height: 1.4; font-weight: 500; font-family: 'Outfit', sans-serif;">
+                👋 Hi Rajan! How can I help you today?
+              </div>
+            </div>
+
+            <!-- Message 2 (User) -->
+            <div style="display: flex; flex-direction: column; align-self: flex-end; max-width: 85%; gap: 2px;">
+              <div style="background: #26ba8a; color: #ffffff; border-radius: 16px 16px 4px 16px; padding: 10px 14px; font-size: 12px; line-height: 1.4; font-weight: 500; font-family: 'Outfit', sans-serif;">
+                Show me revenue trend for this week
+              </div>
+              <span style="font-size: 9px; color: #94a3b8; align-self: flex-end; display: flex; align-items: center; gap: 2px; margin-top: 1px; font-weight: 600;">
+                10:30 AM <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#26ba8a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+            </div>
+
+            <!-- Message 3 (AI + Inline Chart Card) -->
+            <div style="display: flex; flex-direction: column; align-self: flex-start; max-width: 95%; gap: 6px;">
+              <div style="background: #f1f5f9; color: #1e293b; border-radius: 16px 16px 16px 4px; padding: 10px 14px; font-size: 12px; line-height: 1.4; font-weight: 500; font-family: 'Outfit', sans-serif;">
+                Here's your revenue trend for this week:
+              </div>
+              
+              <!-- Mini Line Chart Card inside chat -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; width: 100%;">
+                <svg width="100%" height="90" viewBox="0 0 250 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Gridlines -->
+                  <line x1="30" y1="15" x2="240" y2="15" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2 2" />
+                  <line x1="30" y1="35" x2="240" y2="35" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2 2" />
+                  <line x1="30" y1="55" x2="240" y2="55" stroke="#f1f5f9" stroke-width="1" stroke-dasharray="2 2" />
+                  <line x1="30" y1="75" x2="240" y2="75" stroke="#e2e8f0" stroke-width="1" />
+                  
+                  <!-- Y Axis Labels -->
+                  <text x="5" y="18" fill="#94a3b8" font-size="8" font-weight="600" font-family="'Outfit', sans-serif">₹60K</text>
+                  <text x="5" y="38" fill="#94a3b8" font-size="8" font-weight="600" font-family="'Outfit', sans-serif">₹40K</text>
+                  <text x="5" y="58" fill="#94a3b8" font-size="8" font-weight="600" font-family="'Outfit', sans-serif">₹20K</text>
+                  <text x="15" y="78" fill="#94a3b8" font-size="8" font-weight="600" font-family="'Outfit', sans-serif">₹0</text>
+                  
+                  <!-- Chart Line -->
+                  <path d="M 40 55 L 70 40 L 100 50 L 130 33 L 160 45 L 190 20 L 220 37" stroke="#26ba8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  
+                  <!-- Glow/Shadow under the line -->
+                  <path d="M 40 55 L 70 40 L 100 50 L 130 33 L 160 45 L 190 20 L 220 37 L 220 75 L 40 75 Z" fill="url(#miniChartGrad)" opacity="0.06" />
+                  
+                  <!-- Gradients -->
+                  <defs>
+                    <linearGradient id="miniChartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#26ba8a" />
+                      <stop offset="100%" stop-color="#26ba8a" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  
+                  <!-- Data Nodes -->
+                  <circle cx="40" cy="55" r="3" fill="#ffffff" stroke="#26ba8a" stroke-width="2" />
+                  <circle cx="70" cy="40" r="3" fill="#ffffff" stroke="#26ba8a" stroke-width="2" />
+                  <circle cx="100" cy="50" r="3" fill="#ffffff" stroke="#26ba8a" stroke-width="2" />
+                  <circle cx="130" cy="33" r="3" fill="#ffffff" stroke="#26ba8a" stroke-width="2" />
+                  <circle cx="160" cy="45" r="3" fill="#ffffff" stroke="#26ba8a" stroke-width="2" />
+                  <circle cx="190" cy="20" r="3" fill="#ffffff" stroke="#26ba8a" stroke-width="2" />
+                  <circle cx="220" cy="37" r="3" fill="#ffffff" stroke="#26ba8a" stroke-width="2" />
+                  
+                  <!-- X Axis Labels -->
+                  <text x="40" y="87" fill="#94a3b8" font-size="7.5" font-weight="600" text-anchor="middle" font-family="'Outfit', sans-serif">Apr 4</text>
+                  <text x="70" y="87" fill="#94a3b8" font-size="7.5" font-weight="600" text-anchor="middle" font-family="'Outfit', sans-serif">Apr 5</text>
+                  <text x="100" y="87" fill="#94a3b8" font-size="7.5" font-weight="600" text-anchor="middle" font-family="'Outfit', sans-serif">Apr 6</text>
+                  <text x="130" y="87" fill="#94a3b8" font-size="7.5" font-weight="600" text-anchor="middle" font-family="'Outfit', sans-serif">Apr 7</text>
+                  <text x="160" y="87" fill="#94a3b8" font-size="7.5" font-weight="600" text-anchor="middle" font-family="'Outfit', sans-serif">Apr 8</text>
+                  <text x="190" y="87" fill="#94a3b8" font-size="7.5" font-weight="600" text-anchor="middle" font-family="'Outfit', sans-serif">Apr 9</text>
+                  <text x="220" y="87" fill="#94a3b8" font-size="7.5" font-weight="600" text-anchor="middle" font-family="'Outfit', sans-serif">Apr 10</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            
+            <!-- Action 1 -->
+            <div class="agent-quick-card" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; transition: all 0.2s;" onclick="openAgentModal()">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <!-- Document Icon -->
+                <div style="color: #64748b; display: flex; align-items: center;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <span style="font-size: 12px; font-weight: 600; color: #334155; font-family: 'Outfit', sans-serif;">Top performing products</span>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+
+            <!-- Action 2 -->
+            <div class="agent-quick-card" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; transition: all 0.2s;" onclick="openAgentModal()">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <!-- Wallet Icon -->
+                <div style="color: #64748b; display: flex; align-items: center;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                    <line x1="12" y1="4" x2="12" y2="20"></line>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                  </svg>
+                </div>
+                <span style="font-size: 12px; font-weight: 600; color: #334155; font-family: 'Outfit', sans-serif;">Pending payouts</span>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+
+            <!-- Action 3 -->
+            <div class="agent-quick-card" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; transition: all 0.2s;" onclick="openAgentModal()">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <!-- Clock/History Icon -->
+                <div style="color: #64748b; display: flex; align-items: center;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <span style="font-size: 12px; font-weight: 600; color: #334155; font-family: 'Outfit', sans-serif;">Orders needing attention</span>
+              </div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+
+          </div>
+
+          <!-- Input Area at Bottom -->
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 30px; padding: 5px 5px 5px 16px; display: flex; align-items: center; justify-content: space-between;">
+              <input type="text" id="sidebar-ai-input" placeholder="Ask anything..." style="border: none; background: transparent; font-size: 13px; color: #0f172a; outline: none; width: 80%; font-family: 'Outfit', sans-serif; font-weight: 500;" onkeydown="if(event.key === 'Enter') { openAgentModal(); }" />
+              <button style="width: 34px; height: 34px; border-radius: 50%; background: #26ba8a; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; transition: background 0.2s;" onclick="openAgentModal()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+            <!-- Disclaimer -->
+            <span style="font-size: 9px; color: #94a3b8; text-align: center; font-weight: 500; font-family: 'Outfit', sans-serif;">
+              Nexwear Agent can make mistakes. Verify important data.
+            </span>
+          </div>
+
+        </div>
+        
       </div>
+      
+    </div>
+  </div>
 
       <!-- ══════════════════════════════
          PAGE: ORDERS
     ══════════════════════════════ -->
+      <!-- ══════════════════════════════
+         PAGE: ORDERS
+    ══════════════════════════════ -->
       <div class="page" id="page-orders">
-        <div class="topbar">
-          <div class="topbar-left">
-            <div class="page-title">Orders</div>
-            <div class="page-sub">382 total · 87 today · 4 flagged</div>
-          </div>
-          <div class="topbar-right"><span class="top-badge alert">4 flagged</span></div>
-        </div>
-        <div class="kpi-row col-4">
-          <div class="kpi-card">
-            <div class="kpi-label">Total orders</div>
-            <div class="kpi-value">382</div>
-            <div class="kpi-sub text-up">↑ 87 today</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Printing now</div>
-            <div class="kpi-value">54</div>
-            <div class="kpi-sub text-dim">across 4 partners</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Shipped</div>
-            <div class="kpi-value">28</div>
-            <div class="kpi-sub text-dim">avg 2.1 days transit</div>
-          </div>
-          <div class="kpi-card">
-            <div class="kpi-label">Avg order value</div>
-            <div class="kpi-value">₹4,870</div>
-            <div class="kpi-sub text-up">↑ 6% this week</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title">All orders <span class="card-title-right">filter and search below</span></div>
-          <div class="filter-row">
-            <select id="order-status-filter">
-              <option value="all">All status</option>
-              <option value="printing">Printing</option>
-              <option value="shipped">Shipped</option>
-              <option value="delivered">Delivered</option>
-              <option value="flagged">Flagged</option>
-            </select>
-            <select>
-              <option>All partners</option>
-              <option>PrintX</option>
-              <option>InkMate</option>
-              <option>ColorPro</option>
-              <option>TeeLink</option>
-            </select>
-            <select>
-              <option>All segments</option>
-              <option>College</option>
-              <option>Corporate</option>
-              <option>Regional</option>
-              <option>Fan</option>
-            </select>
-            <input type="search" id="order-search" placeholder="Search order ID or customer…" />
-          </div>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th style="width:95px">Order ID</th>
-                <th style="width:135px">Customer</th>
-                <th style="width:75px">Items</th>
-                <th style="width:90px">Value</th>
-                <th style="width:95px">Partner</th>
-                <th style="width:85px">Date</th>
-                <th style="width:90px">Status</th>
-                <th style="width:85px">Action</th>
-              </tr>
-            </thead>
-            <tbody id="orders-tbody"></tbody>
-          </table>
+        <div class="orders-layout-wrapper">
+          
+          <!-- Left Area (74% width) -->
+          <div class="orders-main-scroll">
+            
+            <!-- Topbar (Title + Search + Profile) -->
+            <div class="topbar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px; gap: 20px; flex-wrap: wrap;">
+              <div class="topbar-left" style="display:flex; flex-direction:column; gap:2px; min-width: 280px; flex: 1;">
+                <div class="page-title" style="font-family:'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: #0f172a;">Orders</div>
+                <div class="page-sub" style="font-size: 11px; color: #64748b; font-weight: 500; display: flex; align-items: center; gap: 4px;">
+                  Manage and track all customer orders in real-time
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="cursor:pointer; color:#94a3b8;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                </div>
+              </div>
+              
+              <!-- Search Bar -->
+              <div class="topbar-search" style="flex: 1.2; max-width: 440px; min-width: 240px; position: relative;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute; left: 16px; top: 50%; transform: translateY(-50%); pointer-events: none;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="order-search-main" placeholder="Search order ID, customer, partner..." style="width: 100%; padding: 11px 60px 11px 48px; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 13px; background: #ffffff; color: #0f172a; outline: none; transition: all 0.2s;" />
+                <span style="position:absolute; right:16px; top:50%; transform:translateY(-50%); font-size:10px; font-weight:700; color:#94a3b8; font-family:'Outfit', sans-serif; border: 1px solid #e2e8f0; padding: 2px 4px; border-radius: 4px;">⌘ K</span>
+              </div>
+              
+              <!-- Bell + Profile -->
+              <div class="topbar-right" style="display:flex; align-items:center; gap:16px;">
+                <div style="position:relative; cursor:pointer; width:42px; height:42px; background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                  <span style="position:absolute; top:-4px; right:-4px; background:#ef4444; color:#ffffff; font-family:'Outfit', sans-serif; font-size:10px; font-weight:700; width:16px; height:16px; border-radius:50%; display:flex; align-items:center; justify-content:center; border: 2px solid #ffffff;">3</span>
+                </div>
+                
+                <div style="display: flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; cursor: pointer; height:42px;">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;" alt="Rajan Kumar" />
+                  <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1.1;">
+                    <span style="font-family:'Outfit', sans-serif; font-size: 11px; font-weight: 700; color: #0f172a;">Rajan Kumar</span>
+                    <span style="font-size: 9px; color: #64748b; font-weight: 500;">Super Admin</span>
+                  </div>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 5 KPI Cards Row -->
+            <div class="orders-kpi-grid">
+              <!-- Card 1 -->
+              <div class="orders-kpi-card">
+                <div class="orders-kpi-icon" style="background:#e6fbf3; color:#22c55e;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                </div>
+                <div class="orders-kpi-info">
+                  <span class="orders-kpi-label">TOTAL ORDERS</span>
+                  <span class="orders-kpi-value">382</span>
+                  <span class="orders-kpi-sub up">↑ 87 today</span>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="orders-kpi-card">
+                <div class="orders-kpi-icon" style="background:#f3e8ff; color:#8b5cf6;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect><path d="M6 6V2h12v4"></path></svg>
+                </div>
+                <div class="orders-kpi-info">
+                  <span class="orders-kpi-label">PRINTING NOW</span>
+                  <span class="orders-kpi-value">54</span>
+                  <span class="orders-kpi-sub dim">Across 4 partners</span>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="orders-kpi-card">
+                <div class="orders-kpi-icon" style="background:#e0f2fe; color:#0ea5e9;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(45deg);"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </div>
+                <div class="orders-kpi-info">
+                  <span class="orders-kpi-label">SHIPPED TODAY</span>
+                  <span class="orders-kpi-value">28</span>
+                  <span class="orders-kpi-sub dim">Avg 2.1 days transit</span>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="orders-kpi-card">
+                <div class="orders-kpi-icon" style="background:#ffedd5; color:#f97316;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                </div>
+                <div class="orders-kpi-info">
+                  <span class="orders-kpi-label">AVG ORDER VALUE</span>
+                  <span class="orders-kpi-value">₹4,870</span>
+                  <span class="orders-kpi-sub up">↑ 6% this week</span>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="orders-kpi-card">
+                <div class="orders-kpi-icon" style="background:#fae8ff; color:#d946ef;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line><line x1="2" y1="20" x2="22" y2="20"></line><path d="M4 20l7-7 4 4 6-6" stroke-width="2.5"></path></svg>
+                </div>
+                <div class="orders-kpi-info">
+                  <span class="orders-kpi-label">REVENUE TODAY</span>
+                  <span class="orders-kpi-value">₹2,45,480</span>
+                  <span class="orders-kpi-sub up">↑ 18% vs yesterday</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tabs Row -->
+            <div class="orders-tabs-row">
+              <div class="orders-tab active" data-tab="all">All Orders</div>
+              <div class="orders-tab" data-tab="printing">Printing</div>
+              <div class="orders-tab" data-tab="shipped">Shipped</div>
+              <div class="orders-tab" data-tab="delivered">Delivered</div>
+              <div class="orders-tab" data-tab="cancelled">Cancelled</div>
+              <div class="orders-tab" data-tab="flagged">Flagged <span class="orders-tab-badge">4</span></div>
+            </div>
+            
+            <!-- Filters Row -->
+            <div class="orders-filter-row">
+              <select class="orders-select" id="order-status-filter">
+                <option value="all">All Status</option>
+                <option value="printing">Printing</option>
+                <option value="shipped">Shipped</option>
+                <option value="delivered">Delivered</option>
+                <option value="flagged">Flagged</option>
+              </select>
+              <select class="orders-select" id="order-partner-filter">
+                <option value="all">All Partners</option>
+                <option value="PrintX">PrintX</option>
+                <option value="ColorPro">ColorPro</option>
+                <option value="TeeLink">TeeLink</option>
+                <option value="InkMate">InkMate</option>
+              </select>
+              <select class="orders-select" id="order-segment-filter">
+                <option value="all">All Segments</option>
+                <option value="College">College</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Regional">Regional</option>
+                <option value="Fan">Fan</option>
+              </select>
+              
+              <div class="orders-datepicker">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>10 Apr – 10 Apr 2026</span>
+              </div>
+              
+              <button class="orders-icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+              
+              <button class="orders-action-btn" style="margin-left: auto;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                Filters
+              </button>
+              
+              <button class="orders-action-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Export
+              </button>
+            </div>
+            
+            <!-- Table Card -->
+            <div class="orders-table-card">
+              <div class="orders-table-container">
+                <table class="orders-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 40px;"><input type="checkbox" style="cursor:pointer;" /></th>
+                      <th style="width: 90px;">ORDER ID</th>
+                      <th style="width: 120px;">CUSTOMER</th>
+                      <th style="width: 120px;">ITEMS</th>
+                      <th style="width: 80px;">VALUE</th>
+                      <th style="width: 140px;">PARTNER</th>
+                      <th style="width: 80px;">DATE</th>
+                      <th style="width: 110px;">STATUS</th>
+                      <th style="width: 90px;">ACTION</th>
+                    </tr>
+                  </thead>
+                  <tbody id="orders-tbody">
+                    <!-- JS Rendered rows matching mockup -->
+                  </tbody>
+                </table>
+              </div>
+              
+              <!-- Pagination Footer -->
+              <div class="orders-pagination-footer">
+                <span class="orders-pagination-text">Showing 1 to 8 of 382 orders</span>
+                <div class="orders-pagination-buttons">
+                  <div class="orders-page-btn active">1</div>
+                  <div class="orders-page-btn">2</div>
+                  <div class="orders-page-btn">3</div>
+                  <span style="font-size:12px; color:#94a3b8; padding: 0 4px;">...</span>
+                  <div class="orders-page-btn">48</div>
+                  <div class="orders-page-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+                </div>
+              </div>
+            </div>
+            
+          </div> <!-- End of Left Area -->
+          
+          <!-- Right Sidebar Area (26% width) -->
+          <div class="db-right-sidebar" style="width: 260px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; padding-left: 4px;">
+            
+            <!-- AI Insights -->
+            <div class="card" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px; margin: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                <span style="font-family:'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #0f172a;">AI Insights</span>
+                <a href="#" style="font-size: 10px; font-weight: 700; color: #3b82f6; text-decoration: none;" onclick="showToast('Loading all insights...', 'info'); return false;">View all</a>
+              </div>
+              
+              <!-- Row 1: Pink/Red -->
+              <div class="ai-insight-alert" style="background: #fff5f5;" onclick="showToast('Opening flagged orders filter', 'warn')">
+                <div class="ai-insight-content">
+                  <div class="ai-insight-icon-box" style="background: #fee2e2; color: #ef4444;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  </div>
+                  <div class="ai-insight-text">
+                    <strong>4 orders flagged</strong>
+                    <span>QC issues detected in last 24h</span>
+                  </div>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+              
+              <!-- Row 2: Lilac/Purple -->
+              <div class="ai-insight-alert" style="background: #faf5ff;" onclick="showToast('Recalculating routing allocations', 'info')">
+                <div class="ai-insight-content">
+                  <div class="ai-insight-icon-box" style="background: #f3e8ff; color: #8b5cf6;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="10" rx="2"></rect><circle cx="12" cy="5" r="2"></circle><path d="M12 7v4"></path></svg>
+                  </div>
+                  <div class="ai-insight-text">
+                    <strong>2 reassignments suggested</strong>
+                    <span>High SLA risk on current partner</span>
+                  </div>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+              
+              <!-- Row 3: Green -->
+              <div class="ai-insight-alert" style="background: #f0fdf4;" onclick="showToast('Viewing revenue forecasts', 'success')">
+                <div class="ai-insight-content">
+                  <div class="ai-insight-icon-box" style="background: #dcfce7; color: #22c55e;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                  </div>
+                  <div class="ai-insight-text">
+                    <strong>Revenue likely to increase</strong>
+                    <span>18% higher than yesterday</span>
+                  </div>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="card" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 8px; margin: 0;">
+              <span style="font-family:'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Quick Actions</span>
+              
+              <div class="qa-row" onclick="showToast('Create new order form coming soon!', 'success')">
+                <div class="qa-content">
+                  <div class="qa-icon-box" style="background: #ecfdf5; color: #10b981;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                  </div>
+                  <div class="qa-info">
+                    <span class="qa-title">Create New Order</span>
+                    <span class="qa-subtitle">Add a new customer order</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="qa-row" onclick="showToast('Opening bulk inquiries view...', 'info')">
+                <div class="qa-content">
+                  <div class="qa-icon-box" style="background: #e0f2fe; color: #0ea5e9;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  </div>
+                  <div class="qa-info">
+                    <span class="qa-title">Bulk Order Inquiry</span>
+                    <span class="qa-subtitle">Corporate & event orders</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="qa-row" onclick="showToast('Running AI partner reassignment...', 'info')">
+                <div class="qa-content">
+                  <div class="qa-icon-box" style="background: #f0fdf4; color: #22c55e;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  </div>
+                  <div class="qa-info">
+                    <span class="qa-title">Partner Assignment</span>
+                    <span class="qa-subtitle">AI routing & reassign</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="qa-row" onclick="showToast('Generating shipping label AWBs...', 'success')">
+                <div class="qa-content">
+                  <div class="qa-icon-box" style="background: #eff6ff; color: #3b82f6;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                  </div>
+                  <div class="qa-info">
+                    <span class="qa-title">Generate Shipping Labels</span>
+                    <span class="qa-subtitle">Print AWB & labels</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Orders by Status -->
+            <div class="card" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px; margin: 0;">
+              <span style="font-family:'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #0f172a;">Orders by Status</span>
+              
+              <div class="orders-doughnut-container">
+                <!-- Doughnut Chart -->
+                <div class="orders-doughnut-chart">
+                  <svg width="110" height="110" viewBox="0 0 36 36">
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f1f5f9" stroke-width="3"></circle>
+                    <!-- Printing (14.1% -> stroke-dasharray="14.1 85.9") -->
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="14.1 85.9" stroke-dashoffset="25"></circle>
+                    <!-- Shipped (28.3% -> stroke-dasharray="28.3 71.7") -->
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="28.3 71.7" stroke-dashoffset="10.9"></circle>
+                    <!-- Delivered (40.8% -> stroke-dasharray="40.8 59.2") -->
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#0ea5e9" stroke-width="3" stroke-dasharray="40.8 59.2" stroke-dashoffset="-17.4"></circle>
+                    <!-- Flagged (4.7% -> stroke-dasharray="4.7 95.3") -->
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="4.7 95.3" stroke-dashoffset="-58.2"></circle>
+                    <!-- Others (12.1% -> stroke-dasharray="12.1 87.9") -->
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="12.1 87.9" stroke-dashoffset="-62.9"></circle>
+                  </svg>
+                  <div class="orders-doughnut-text">
+                    <span class="orders-doughnut-count">382</span>
+                    <span class="orders-doughnut-label">Total</span>
+                  </div>
+                </div>
+                
+                <!-- Legend -->
+                <div class="orders-doughnut-legend">
+                  <div class="orders-legend-item">
+                    <span class="orders-legend-label"><span class="orders-legend-dot" style="background:#22c55e;"></span>Printing</span>
+                    <span>54 (14.1%)</span>
+                  </div>
+                  <div class="orders-legend-item">
+                    <span class="orders-legend-label"><span class="orders-legend-dot" style="background:#3b82f6;"></span>Shipped</span>
+                    <span>108 (28.3%)</span>
+                  </div>
+                  <div class="orders-legend-item">
+                    <span class="orders-legend-label"><span class="orders-legend-dot" style="background:#0ea5e9;"></span>Delivered</span>
+                    <span>156 (40.8%)</span>
+                  </div>
+                  <div class="orders-legend-item">
+                    <span class="orders-legend-label"><span class="orders-legend-dot" style="background:#ef4444;"></span>Flagged</span>
+                    <span>18 (4.7%)</span>
+                  </div>
+                  <div class="orders-legend-item">
+                    <span class="orders-legend-label"><span class="orders-legend-dot" style="background:#94a3b8;"></span>Others</span>
+                    <span>46 (12.1%)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div> <!-- End of Right Sidebar -->
+          
         </div>
       </div>
 
@@ -1373,7 +2143,862 @@
         </div><!-- end add-product-layout -->
       </div><!-- end page-add-product -->
 
+      <!-- ══════════════════════════════
+         PAGE: BULK ORDERS
+      ══════════════════════════════ -->
+      <div class="page" id="page-bulk-orders">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Bulk Order Management</div>
+            <div class="page-sub">Corporate & College festival inquiries</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Pending Inquiries</div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Organization</th><th>Qty</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="primary">IIT Delhi - Fest Tees</td><td>500</td><td>Quotation Sent</td><td><button class="btn btn-sm">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PARTNER ASSIGN
+      ══════════════════════════════ -->
+      <div class="page" id="page-partner-assign">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">AI Partner Assignment</div>
+            <div class="page-sub">Real-time load balancing between print partners</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ai-chip"><span class="ai-dot"></span>Auto-assignment active</div>
+          <div class="partner-row" style="margin-top:20px; padding:15px; background:#f1f8e9; border-radius:8px;">
+            <strong>Order #1045</strong> -> Assigned to <strong>Mumbai Prints Co.</strong>
+            <div style="font-size:11px; color:#666">Reason: Proximity (2.4km) & Quality Score (4.9)</div>
+          </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PRODUCTION
+      ══════════════════════════════ -->
+      <div class="page" id="page-production">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Production Tracking</div>
+            <div class="page-sub">Live status from partner factory floors</div>
+          </div>
+        </div>
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr><th>Order</th><th>Partner</th><th>Status</th><th>QC Photo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#1043</td><td>Bangalore Prints</td><td><span class="pill pill-teal">Printing</span></td><td><button class="btn btn-sm">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SHIPMENTS
+      ══════════════════════════════ -->
+      <div class="page" id="page-shipments">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Shipment Management</div>
+            <div class="page-sub">Courier integration (Delhivery / Shiprocket)</div>
+          </div>
+        </div>
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr><th>Order</th><th>Courier</th><th>AWB</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#1041</td><td>Delhivery</td><td>DELH987654321</td><td><span class="pill pill-teal">In Transit</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: VARIANTS
+      ══════════════════════════════ -->
+      <div class="page" id="page-variants">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Product Variant Manager</div>
+            <div class="page-sub">SKU-level inventory control</div>
+          </div>
+        </div>
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr><th>Color</th><th>Size</th><th>Stock</th><th>SKU</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Black</td><td>M</td><td>25</td><td>NXW-TEE-BLK-M</td></tr>
+              <tr><td>Black</td><td>L</td><td>12</td><td>NXW-TEE-BLK-L</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SEO
+      ══════════════════════════════ -->
+      <div class="page" id="page-seo">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">SEO Metadata Editor</div>
+            <div class="page-sub">Manage meta titles & descriptions for Google</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="form-group">
+            <label class="form-label">Meta Title</label>
+            <input class="form-input" value="Noir Essence Premium Cotton Tee | Nexwear" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Meta Description</label>
+            <textarea class="form-input">Discover the ultra-premium Noir Essence tee, made from 240GSM heavy-knit cotton.</textarea>
+          </div>
+          <button class="btn btn-primary">Save SEO Data</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: BULK IMPORT
+      ══════════════════════════════ -->
+      <div class="page" id="page-bulk-import">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Bulk Import / Export</div>
+            <div class="page-sub">Sync catalogue via CSV</div>
+          </div>
+        </div>
+        <div class="card" style="text-align:center; padding:40px;">
+          <div style="font-size:40px">📄</div>
+          <h3>Upload CSV File</h3>
+          <p>Drag and drop your product CSV here</p>
+          <button class="btn btn-primary" style="margin-top:15px">Choose File</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: ONBOARDING
+      ══════════════════════════════ -->
+      <div class="page" id="page-onboarding">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Partner Onboarding</div>
+            <div class="page-sub">Verification & background checks</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="partner-row">
+            <strong>Mumbai Prints Co.</strong> — Docs Pending Review
+            <button class="btn btn-sm">Verify Docs</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SLA MONITOR
+      ══════════════════════════════ -->
+      <div class="page" id="page-sla-monitor">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">SLA Monitoring</div>
+            <div class="page-sub">Live tracking of delivery times & defect rates</div>
+          </div>
+        </div>
+        <div class="kpi-row col-3">
+            <div class="kpi-card">Avg Delivery Time: 3.2 Days</div>
+            <div class="kpi-card">Defect Rate: 0.4%</div>
+            <div class="kpi-card">SLA Compliance: 98%</div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PARTNER CHAT
+      ══════════════════════════════ -->
+      <div class="page" id="page-partner-chat">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Partner Communication Hub</div>
+          </div>
+        </div>
+        <div class="card" style="height:400px; display:flex; flex-direction:column;">
+            <div style="flex:1; background:#f9f9f9; padding:20px; border-radius:8px; overflow-y:auto">
+                <div><strong>PrintX:</strong> Material for order #1045 is ready.</div>
+            </div>
+            <div style="display:flex; margin-top:15px; gap:10px">
+                <input class="form-input" style="flex:1" placeholder="Type message..." />
+                <button class="btn btn-primary">Send</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: RETURN REQ
+      ══════════════════════════════ -->
+      <div class="page" id="page-return-req">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Return & Exchange Requests</div>
+            <div class="page-sub">Approval queue for high-value returns</div>
+          </div>
+        </div>
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr><th>Order</th><th>Reason</th><th>Status</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#1029</td><td>Size Issue</td><td><span class="pill pill-amber">Pending</span></td><td><button class="btn btn-sm">Review</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: DISPUTES
+      ══════════════════════════════ -->
+      <div class="page" id="page-disputes">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Dispute Resolution Tracker</div>
+          </div>
+        </div>
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr><th>Dispute ID</th><th>Issue</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>#DIS-441</td><td>Late Delivery</td><td><span class="pill pill-amber">Investigating</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: HEATMAP
+      ══════════════════════════════ -->
+      <div class="page" id="page-heatmap">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Revenue Heatmap</div>
+            <div class="page-sub">Visualizing orders across India</div>
+          </div>
+        </div>
+        <div class="card" style="height:400px; background:#eef2f5; display:flex; justify-content:center; align-items:center;">
+            <p>🗺️ Interactive Map Loading...</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: FORECASTING
+      ══════════════════════════════ -->
+      <div class="page" id="page-forecasting">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">AI Sales Forecast</div>
+          </div>
+        </div>
+        <div class="card">
+            <h3>Predicted Spike: June (College Fest Season)</h3>
+            <p>Recommendation: Increase stock of 180GSM Oversized Tees by 30%.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SEGMENTATION
+      ══════════════════════════════ -->
+      <div class="page" id="page-segmentation">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Customer Segmentation</div>
+          </div>
+        </div>
+        <div class="grid-3">
+            <div class="card"><h4>College Students</h4><p>42% of base</p></div>
+            <div class="card"><h4>Corporate Fans</h4><p>28% of base</p></div>
+            <div class="card"><h4>Hypebeasts</h4><p>15% of base</p></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: FEEDBACK AI
+      ══════════════════════════════ -->
+      <div class="page" id="page-feedback-ai">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Feedback AI Sentiment</div>
+          </div>
+        </div>
+        <div class="card">
+            <div style="display:flex; gap:10px">
+                <span class="pill pill-teal">Great Quality (124)</span>
+                <span class="pill pill-amber">Sizing Issues (12)</span>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: TAX SETTINGS
+      ══════════════════════════════ -->
+      <div class="page" id="page-tax-settings">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">GST & Tax Configuration</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="form-group">
+                <label class="form-label">CGST (%)</label>
+                <input class="form-input" type="number" value="2.5" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">SGST (%)</label>
+                <input class="form-input" type="number" value="2.5" />
+            </div>
+            <button class="btn btn-primary">Update GST Rates</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: AUDIT LOG
+      ══════════════════════════════ -->
+      <div class="page" id="page-audit-log">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">System Audit Log</div>
+            <div class="page-sub">Security tracking of all admin actions</div>
+          </div>
+        </div>
+        <div class="card">
+            <div style="font-family:monospace; font-size:12px">
+                <div>[10:30] Admin Rajan updated product #442 stock to 50</div>
+                <div>[09:15] AI Agent auto-assigned order #1045 to PrintX</div>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: LIVE ORDER FEED
+      ══════════════════════════════ -->
+      <div class="page" id="page-live-feed">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Live Order Feed 🔴</div>
+            <div class="page-sub">Real-time production and sales updates</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="partner-row"><strong>#NXW-1045</strong> — Rahul K. just ordered!</div>
+            <div class="partner-row"><strong>#NXW-1044</strong> — Payout processed for Bangalore Prints.</div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: INVENTORY ALERTS
+      ══════════════════════════════ -->
+      <div class="page" id="page-inventory-alerts">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Inventory Alerts</div>
+          </div>
+        </div>
+        <div class="card">
+            <div style="color:red">⚠️ Low Stock: Noir Essence Tee (L) - 3 units left</div>
+            <div style="color:red">⚠️ Out of Stock: Urban Core Oversized (M)</div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: NOTIF CENTER
+      ══════════════════════════════ -->
+      <div class="page" id="page-notif-center">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Admin Notification Center</div>
+          </div>
+        </div>
+        <div class="card">
+            <p>🔔 New partner 'Delhi Custom Prints' waiting for verification.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: ANOMALY
+      ══════════════════════════════ -->
+      <div class="page" id="page-anomaly">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">AI Anomaly Detection</div>
+          </div>
+        </div>
+        <div class="card">
+            <p>🔍 Unusual refund spike detected in the last 24 hours.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: DESIGN APPROVAL
+      ══════════════════════════════ -->
+      <div class="page" id="page-design-approval">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Design Approval Workflow</div>
+          </div>
+        </div>
+        <div class="card">
+            <p>Review 3 designs flagged for copyright verification.</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SUPPORT QUEUE
+      ══════════════════════════════ -->
+      <div class="page" id="page-support-queue">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Customer Support Queue</div>
+          </div>
+        </div>
+        <div class="card">
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>User</th><th>Subject</th><th>Status</th></tr></thead>
+                <tbody><tr><td>#T-892</td><td>Neha W.</td><td>Order Delayed</td><td><span class="pill pill-amber">Open</span></td></tr></tbody>
+            </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: CAMPAIGNS
+      ══════════════════════════════ -->
+      <div class="page" id="page-campaigns">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Marketing Campaign Manager</div>
+          </div>
+        </div>
+        <div class="card">
+            <button class="btn btn-primary">+ Create New Email Campaign</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: COUPONS
+      ══════════════════════════════ -->
+      <div class="page" id="page-coupons">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Coupon Management</div>
+          </div>
+        </div>
+        <div class="card">
+            <table class="data-table">
+                <thead><tr><th>Code</th><th>Discount</th><th>Status</th></tr></thead>
+                <tbody><tr><td>WELCOME10</td><td>10%</td><td>Active</td></tr></tbody>
+            </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: ORDER DETAIL
+      ══════════════════════════════ -->
+      <div class="page" id="page-order-detail">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Order #NXW-1045 Details</div>
+            <div class="page-sub">Customer: Rahul K. · Status: Printing</div>
+          </div>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <h4>Items</h4>
+                <p>1x Noir Essence Tee (L) - Black</p>
+            </div>
+            <div class="card">
+                <h4>Shipping Address</h4>
+                <p>123 MG Road, Mumbai, MH</p>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: CUSTOMER DETAIL
+      ══════════════════════════════ -->
+      <div class="page" id="page-customer-detail">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">User: rahul.k@gmail.com</div>
+          </div>
+        </div>
+        <div class="kpi-row col-3">
+            <div class="kpi-card">Lifetime Spent: ₹12,450</div>
+            <div class="kpi-card">Total Orders: 5</div>
+            <div class="kpi-card">Segment: Frequent Buyer</div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: REVIEWS
+      ══════════════════════════════ -->
+      <div class="page" id="page-reviews">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Review Moderation</div>
+          </div>
+        </div>
+        <div class="card">
+            <div style="padding:15px; border-bottom:1px solid #eee">
+                <strong>Rahul K.</strong> gave 5 stars: "Great fit!"
+                <button class="btn btn-sm">Approve</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: AGENT CONFIG
+      ══════════════════════════════ -->
+      <div class="page" id="page-agent-config">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">AI Agent Configuration</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="form-group">
+                <label class="form-label">Confidence Threshold (%)</label>
+                <input class="form-input" type="number" value="85" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Auto-Refund Max (₹)</label>
+                <input class="form-input" type="number" value="500" />
+            </div>
+            <button class="btn btn-primary">Save Config</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PAYOUT PROC
+      ══════════════════════════════ -->
+      <div class="page" id="page-payout-proc">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Payout Processing Queue</div>
+          </div>
+        </div>
+        <div class="card">
+            <p>Verification pending for 2 partner bank accounts.</p>
+            <button class="btn btn-teal">Verify All</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SHIPPING LABELS
+      ══════════════════════════════ -->
+      <div class="page" id="page-shipping-label">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Shipping Label Generator</div>
+          </div>
+        </div>
+        <div class="card" style="width:400px; padding:20px; border:2px solid #000; font-family:monospace;">
+            <div style="border-bottom:1px solid #000; padding-bottom:10px; margin-bottom:10px;">
+                <strong>DELHIVERY</strong> | AWB: DELH987654321
+            </div>
+            <div>TO: Rahul K.</div>
+            <div>123 MG Road, Mumbai, MH - 400001</div>
+            <div style="margin-top:10px; font-size:24px; text-align:center;">|||| |||| |||| ||||</div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:20px">Print Label</button>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: POLICIES
+      ══════════════════════════════ -->
+      <div class="page" id="page-policy-settings">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Policy Configuration</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="form-group">
+                <label class="form-label">Return Window (Days)</label>
+                <input class="form-input" type="number" value="7" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Refund Policy Text</label>
+                <textarea class="form-input">Items must be unworn and in original packaging...</textarea>
+            </div>
+            <button class="btn btn-primary">Update Policies</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: EMAIL TEMPLATES
+      ══════════════════════════════ -->
+      <div class="page" id="page-email-templates">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Email & SMS Templates</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="partner-row">
+                <strong>Order Confirmation</strong>
+                <button class="btn btn-sm">Edit HTML</button>
+            </div>
+            <div class="partner-row">
+                <strong>Shipment Out for Delivery</strong>
+                <button class="btn btn-sm">Edit HTML</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: QC DETAIL
+      ══════════════════════════════ -->
+      <div class="page" id="page-qc-detail">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Quality Control Bench</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="partner-row">
+                <strong>Order #1043</strong> - Printed by PrintX
+                <button class="btn btn-teal">Pass QC</button>
+                <button class="btn btn-red">Fail & Re-print</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PARTNER REPORTS
+      ══════════════════════════════ -->
+      <div class="page" id="page-partner-reports">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Partner Performance Reports</div>
+          </div>
+        </div>
+        <div class="card">
+            <table class="data-table">
+                <thead><tr><th>Partner</th><th>On-Time %</th><th>Defect Rate</th><th>Score</th></tr></thead>
+                <tbody><tr><td>PrintX Chennai</td><td>98.2%</td><td>0.1%</td><td><strong>94</strong></td></tr></tbody>
+            </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: TAX REPORTS
+      ══════════════════════════════ -->
+      <div class="page" id="page-tax-reports">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Tax & GST Reports</div>
+          </div>
+        </div>
+        <div class="card">
+            <div style="display:flex; gap:10px">
+                <button class="btn">Download Q4 GSTR-1</button>
+                <button class="btn">Download Q4 GSTR-3B</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: PLAGIARISM REPORTS
+      ══════════════════════════════ -->
+      <div class="page" id="page-plagiarism-reports">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">AI Plagiarism Check</div>
+            <div class="page-sub">Scanning designs against database for copyright issues</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="partner-row">
+                <strong>Design #AI-992</strong> - Flagged: 84% similarity to existing brand logo.
+                <button class="btn btn-red">Reject Design</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: SHIPPING RATES
+      ══════════════════════════════ -->
+      <div class="page" id="page-shipping-rates">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Shipping Rate Configuration</div>
+          </div>
+        </div>
+        <div class="card">
+            <div class="form-group">
+                <label class="form-label">Free Shipping Threshold (₹)</label>
+                <input class="form-input" type="number" value="999" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Flat Rate (₹)</label>
+                <input class="form-input" type="number" value="60" />
+            </div>
+            <button class="btn btn-primary">Save Rates</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: TAX CALC
+      ══════════════════════════════ -->
+      <div class="page" id="page-tax-calc">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">GST Tax Calculator</div>
+            <div class="page-sub">Simulate tax liability on custom orders</div>
+          </div>
+        </div>
+        <div class="card" style="max-width:500px;">
+            <div class="form-group">
+                <label class="form-label">Order Amount (₹)</label>
+                <input class="form-input" id="tc-amount" type="number" placeholder="1000" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">GST Category</label>
+                <select class="form-input">
+                    <option>Apparel (5%)</option>
+                    <option>Accessories (12%)</option>
+                    <option>Services (18%)</option>
+                </select>
+            </div>
+            <div style="margin-top:20px; padding:20px; background:#f9f9f9; border-radius:8px;">
+                <div style="display:flex; justify-content:space-between"><span>Base:</span><span>₹1,000.00</span></div>
+                <div style="display:flex; justify-content:space-between"><span>CGST (2.5%):</span><span>₹25.00</span></div>
+                <div style="display:flex; justify-content:space-between"><span>SGST (2.5%):</span><span>₹25.00</span></div>
+                <hr />
+                <div style="display:flex; justify-content:space-between; font-weight:bold"><span>Total:</span><span>₹1,050.00</span></div>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: INTEGRATIONS
+      ══════════════════════════════ -->
+      <div class="page" id="page-integrations">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Third-Party API Integrations</div>
+            <div class="page-sub">Securely manage your connection keys</div>
+          </div>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Payments (Stripe/Razorpay)</h3>
+                <div class="form-group">
+                    <label class="form-label">Secret Key</label>
+                    <input class="form-input" type="password" value="sk_test_••••••••••••" />
+                </div>
+                <button class="btn btn-primary">Update Keys</button>
+            </div>
+            <div class="card">
+                <h3>AI Services (OpenAI)</h3>
+                <div class="form-group">
+                    <label class="form-label">API Key</label>
+                    <input class="form-input" type="password" value="sk-••••••••••••" />
+                </div>
+                <button class="btn btn-primary">Update Keys</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: MEDIA LIBRARY
+      ══════════════════════════════ -->
+      <div class="page" id="page-media-library">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Media Library</div>
+            <div class="page-sub">Central repository for all site assets</div>
+          </div>
+        </div>
+        <div class="card" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:15px;">
+            <div style="aspect-ratio:1/1; background:#eee; border-radius:8px; display:flex; align-items:center; justify-content:center;">Logo.png</div>
+            <div style="aspect-ratio:1/1; background:#eee; border-radius:8px; display:flex; align-items:center; justify-content:center;">Banner.jpg</div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════
+         PAGE: ROLES
+      ══════════════════════════════ -->
+      <div class="page" id="page-roles">
+        <div class="topbar">
+          <div class="topbar-left">
+            <div class="page-title">Role Management</div>
+            <div class="page-sub">Define permissions for admin staff</div>
+          </div>
+        </div>
+        <div class="card">
+            <table class="data-table">
+                <thead><tr><th>Role Name</th><th>Permissions</th><th>Users</th></tr></thead>
+                <tbody>
+                    <tr><td>Super Admin</td><td>Full Access</td><td>2</td></tr>
+                    <tr><td>Support Lead</td><td>Customers, Orders, Chat</td><td>3</td></tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+
     </main>
+  </div>
+
+  <!-- ═══ ASK NEXWEAR AGENT MODAL ═══ -->
+  <div id="agent-modal" class="agent-modal-overlay" style="display:none;" onclick="if(event.target === this) closeAgentModal()">
+    <div class="agent-modal-container">
+      <div class="agent-modal-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="ai-chip" style="margin:0; background: rgba(139, 92, 246, 0.08); color: var(--purple);">
+            <span class="ai-dot" style="background: var(--purple); box-shadow: 0 0 8px var(--purple);"></span>Ask Nexwear Agent
+          </span>
+        </div>
+        <button class="agent-modal-close" onclick="closeAgentModal()">&times;</button>
+      </div>
+      <div class="agent-modal-body">
+        <div class="agent-chat-log" id="agent-chat-log">
+          <div class="agent-chat-msg system">
+            <span class="avatar-sm">🤖</span>
+            <div class="msg-bubble">
+              Hello Rajan! Ask me anything about Nexwear operations, designs, print partners, or revenue.
+            </div>
+          </div>
+        </div>
+        
+        <div class="agent-quick-tags">
+          <span class="agent-tag" onclick="sendModalQuery('Which partner has the most delays this week?')">Which partner delays? ↗</span>
+          <span class="agent-tag" onclick="sendModalQuery('Top selling design category this month?')">Top design category ↗</span>
+          <span class="agent-tag" onclick="sendModalQuery('Why did revenue drop on Apr 7?')">Why Apr 7 drop? ↗</span>
+        </div>
+        
+        <div class="agent-input-container">
+          <input type="text" id="modal-ai-input" placeholder="Ask agent..." onkeydown="if(event.key === 'Enter') sendModalQuery()" />
+          <button class="btn-send-agent" onclick="sendModalQuery()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- TOAST CONTAINER -->

@@ -1,9 +1,11 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, ShoppingBag } from 'lucide-react';
 import { useScroll } from '../../hooks/useScroll';
+import { useCart } from '../../store/CartContext';
 
 const Navbar = () => {
     const scrolled = useScroll(50);
+    const { totalCount } = useCart();
 
     return (
         <nav className={`navbar ${scrolled ? 'nav-scrolled' : ''}`}>
@@ -12,14 +14,14 @@ const Navbar = () => {
                     <Menu size={24} color="var(--color-espresso)" />
                 </button>
 
-                <a href="/" className="logo">
+                <Link to="/" className="logo">
                     Nexwear
-                </a>
+                </Link>
 
-                <button className="icon-btn bag-btn" aria-label="Cart">
+                <Link to="/cart" className="icon-btn bag-btn" aria-label="Cart">
                     <ShoppingBag size={24} color="var(--color-espresso)" />
-                    <span className="badge">1</span>
-                </button>
+                    {totalCount > 0 && <span className="badge">{totalCount}</span>}
+                </Link>
             </div>
         </nav>
     );

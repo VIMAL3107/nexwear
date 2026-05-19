@@ -26,6 +26,12 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: var(--font-secondary);
   background-color: var(--color-sugar);
@@ -33,7 +39,6 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-size: 16px;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -93,6 +98,10 @@ img {
 }
 
 /* Base Layout Classes */
+.app-content {
+  height: 100vh;
+  overflow: hidden;
+}
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -137,3 +146,57 @@ img {
 .img-soft-rounded {
   border-radius: 200px 200px 0 0;
 }
+
+/* ══════════════════════════════════════════════════════
+   STANDARDIZED TELEMETRY LAYOUT & UTILITIES
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  /* Dynamic Telemetry Accent Highlights */
+  --accent-teal: #0d9488;
+  --accent-teal-glow: rgba(13, 148, 136, 0.08);
+  --accent-indigo: #4f46e5;
+  --accent-indigo-glow: rgba(79, 70, 229, 0.08);
+
+  /* Elevation Shadows & Transitions */
+  --shadow-sm: 0 1px 3px rgba(57, 46, 38, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(57, 46, 38, 0.05), 0 2px 4px -1px rgba(57, 46, 38, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(57, 46, 38, 0.04), 0 4px 6px -2px rgba(57, 46, 38, 0.02);
+  --shadow-premium: 0 20px 40px -15px rgba(57, 46, 38, 0.12);
+  --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Standard Fluid Responsive Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+@media (min-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+@media (min-width: 640px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3, 1fr); gap: var(--spacing-md); } }
+
+/* Premium Card System */
+.premium-card {
+  background-color: var(--color-sugar);
+  border: 1px solid var(--color-bisque);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-spring);
+}
+
+.premium-card.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-premium);
+  border-color: var(--color-wheat);
+}
+

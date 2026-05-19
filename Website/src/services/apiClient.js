@@ -9,6 +9,9 @@ export const apiClient = async (endpoint, options = {}) => {
         'Content-Type': 'application/json',
     };
 
+    const token = localStorage.getItem('token');
+    if (token) defaultHeaders['Authorization'] = `Bearer ${token}`;
+
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         ...options,
         headers: { ...defaultHeaders, ...options.headers },

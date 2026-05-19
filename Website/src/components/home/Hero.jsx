@@ -17,6 +17,16 @@ const Hero = () => {
                         <button className="btn-secondary">View New Arrivals</button>
                     </div>
                 </div>
+
+                <div className="hero-image-wrapper animate-fade-in-right">
+                    <div className="image-backdrop"></div>
+                    <img
+                        src="/src/assets/hero.png"
+                        alt="Summer Collection"
+                        className="hero-image"
+                        loading="eager"
+                    />
+                </div>
             </div>
         </header>
     );
